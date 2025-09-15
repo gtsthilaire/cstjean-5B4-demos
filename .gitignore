@@ -1,0 +1,9 @@
+# IDE
+.vscode/settings.json
+
+# OS
+.DS_Store
+
+# Build
+build/
+managed_components/

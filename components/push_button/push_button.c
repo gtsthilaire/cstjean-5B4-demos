@@ -45,9 +45,9 @@ static void push_button_task(void *arg)
                 s_stable_level = raw_level;
                 
                 if (s_stable_level == 0) {
-                    ESP_LOGD(TAG, "Push button PRESSED");
+                    ESP_LOGI(TAG, "Push button PRESSED");
                 } else {
-                    ESP_LOGD(TAG, "Push button RELEASED");
+                    ESP_LOGI(TAG, "Push button RELEASED");
                 }
             }
         }

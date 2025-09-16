@@ -53,7 +53,7 @@ static void led_pixel_task(void *arg)
 
     while (1) {
         if (led_on_off) {
-            ESP_LOGD(TAG, "Led ON");
+            ESP_LOGI(TAG, "Led ON");
 
             // Allumer les LEDs une par une dans différentes couleurs
             for (int j = 0; j < 5; j++) {
@@ -64,7 +64,7 @@ static void led_pixel_task(void *arg)
                 }               
             }
         } else {
-            ESP_LOGD(TAG, "Led OFF");
+            ESP_LOGI(TAG, "Led OFF");
             led_strip_clear(s_led_strip);
         }
 

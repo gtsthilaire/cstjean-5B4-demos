@@ -24,11 +24,11 @@ static void led_init(gpio_num_t gpio)
 static void led_task(void *arg)
 {
     while (1) {
-        ESP_LOGD(TAG, "Led ON");
+        ESP_LOGI(TAG, "Led ON");
         gpio_set_level(s_led_gpio, 1);
         vTaskDelay(pdMS_TO_TICKS(500));
 
-        ESP_LOGD(TAG, "Led OFF");
+        ESP_LOGI(TAG, "Led OFF");
         gpio_set_level(s_led_gpio, 0);
         vTaskDelay(pdMS_TO_TICKS(500));
     }

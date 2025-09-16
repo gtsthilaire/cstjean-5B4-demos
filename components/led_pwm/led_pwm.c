@@ -95,14 +95,14 @@ static void led_pwm_task(void *arg)
     const int step = LEDC_DUTY_MAX / 10; // pour faire des pas de 10% sinon c'est trop lent
 
     while (1) {
-        ESP_LOGD(TAG, "Led FADE IN");
+        ESP_LOGI(TAG, "Led FADE IN");
         for (int duty = 0; duty <= LEDC_DUTY_MAX; duty += step) {
             ledc_set_duty(LEDC_MODE, LEDC_CHANNEL, duty); // On définit le duty
             ledc_update_duty(LEDC_MODE, LEDC_CHANNEL); // On applique le duty
             vTaskDelay(10);
         }
 
-        ESP_LOGD(TAG, "Led FADE OUT");
+        ESP_LOGI(TAG, "Led FADE OUT");
         for (int duty = LEDC_DUTY_MAX; duty >= 0; duty -= step) {
             ledc_set_duty(LEDC_MODE, LEDC_CHANNEL, duty);
             ledc_update_duty(LEDC_MODE, LEDC_CHANNEL);

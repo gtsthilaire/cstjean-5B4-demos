@@ -25,11 +25,11 @@ static void buzzer_active_init(gpio_num_t buzzer_gpio)
 static void buzzer_active_task(void *arg)
 {
     while (1) {
-        ESP_LOGD(TAG, "Buzzer ON");
+        ESP_LOGI(TAG, "Buzzer ON");
         gpio_set_level(s_buzzer_gpio, 1);
         vTaskDelay(pdMS_TO_TICKS(100));
 
-        ESP_LOGD(TAG, "Buzzer OFF");
+        ESP_LOGI(TAG, "Buzzer OFF");
         gpio_set_level(s_buzzer_gpio, 0);
         vTaskDelay(pdMS_TO_TICKS(500));
     }

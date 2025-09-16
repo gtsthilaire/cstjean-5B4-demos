@@ -52,7 +52,7 @@ static void buzzer_passive_init(gpio_num_t buzzer_gpio)
 static void buzzer_passive_task(void *arg)
 {
     while (1) {
-        ESP_LOGD(TAG, "Buzzer ON");
+        ESP_LOGI(TAG, "Buzzer ON");
         
         // Fait varier la fréquence du PWM selon une sinusoïde pour créer un effet de sirène.
         for (int x = 0; x < 360; x += STEP_DEG) {

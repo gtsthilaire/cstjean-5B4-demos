@@ -78,19 +78,19 @@ static void led_rgb_set(uint8_t r, uint8_t g, uint8_t b)
 static void led_rgb_task(void *arg)
 {
     while (1) {
-        ESP_LOGD(TAG, "Led RED");
+        ESP_LOGI(TAG, "Led RED");
         led_rgb_set(LEDC_DUTY_MAX, 0, 0);
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        ESP_LOGD(TAG, "Led GREEN");
+        ESP_LOGI(TAG, "Led GREEN");
         led_rgb_set(0, LEDC_DUTY_MAX, 0);
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        ESP_LOGD(TAG, "Led BLUE");
+        ESP_LOGI(TAG, "Led BLUE");
         led_rgb_set(0, 0, LEDC_DUTY_MAX);
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        ESP_LOGD(TAG, "Led WHITE");
+        ESP_LOGI(TAG, "Led WHITE");
         led_rgb_set(LEDC_DUTY_MAX, LEDC_DUTY_MAX, LEDC_DUTY_MAX);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }

@@ -36,7 +36,7 @@ static void touch_task(void *arg)
         touch_pad_read_raw_data(s_touch_pad, &raw);
         touch_pad_read_filtered(s_touch_pad, &filt);
 
-        ESP_LOGD(TAG, "Touch raw=%5u  filtered=%5u", raw, filt);
+        ESP_LOGI(TAG, "Touch raw=%5u  filtered=%5u", raw, filt);
 
         vTaskDelay(pdMS_TO_TICKS(100)); 
     }

@@ -53,7 +53,7 @@ static void potentiometer_task(void *arg)
 
         double voltage = (adc_raw / 4095.0) * 3.3;  // approximation simple
 
-        ESP_LOGD(TAG, "ADC(GPIO34): raw=%4d   V≈ %.2f V", adc_raw, voltage);
+        ESP_LOGI(TAG, "ADC(GPIO34): raw=%4d   V≈ %.2f V", adc_raw, voltage);
 
         // Utiliser DAC (GPIO25 ou GPIO26) ou PWM pour générer une tension de sortie
         // en fonction de la valeur lue sur le potentiomètre

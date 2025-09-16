@@ -42,13 +42,13 @@ static void led_bar_task(void *arg)
 {
     while (1) {
         for (int i = 0; i < s_leds_count; i++) {
-            ESP_LOGD(TAG, "Led %d ON", s_led_bar_gpios[i]);
+            ESP_LOGI(TAG, "Led %d ON", s_led_bar_gpios[i]);
             gpio_set_level(s_led_bar_gpios[i], 1);
             vTaskDelay(pdMS_TO_TICKS(500));
         }
 
         for (int i = s_leds_count - 1; i >= 0; i--) {
-            ESP_LOGD(TAG, "Led %d OFF", s_led_bar_gpios[i]);
+            ESP_LOGI(TAG, "Led %d OFF", s_led_bar_gpios[i]);
             gpio_set_level(s_led_bar_gpios[i], 0);
             vTaskDelay(pdMS_TO_TICKS(500));
         }

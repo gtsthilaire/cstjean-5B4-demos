@@ -8,6 +8,8 @@
 #include "buzzer_passive.h"
 #include "potentiometer.h"
 #include "touch.h"
+#include "photoresistor.h"
+#include "thermistor.h"
 
 void app_main(void)
 {
@@ -41,4 +43,10 @@ void app_main(void)
 
     // components/touch/touch.c
     // start_demo_touch_task(TOUCH_PAD_NUM0); // GPIO4
+
+    // components/photoresistor/photoresistor.c
+    // start_demo_photoresistor_task(ADC_CHANNEL_6); // GPIO34
+
+    // components/thermistor/thermistor.c
+    // start_demo_thermistor_task(ADC_CHANNEL_6); // GPIO34
 }

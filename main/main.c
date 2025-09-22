@@ -10,6 +10,7 @@
 #include "touch.h"
 #include "photoresistor.h"
 #include "thermistor.h"
+#include "lcd1602.h"
 
 void app_main(void)
 {
@@ -49,4 +50,7 @@ void app_main(void)
 
     // components/thermistor/thermistor.c
     // start_demo_thermistor_task(ADC_CHANNEL_6); // GPIO34
+
+    // components/lcd1602/lcd1602.c
+    // start_demo_lcd1602_task();
 }

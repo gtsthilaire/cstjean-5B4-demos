@@ -76,7 +76,6 @@ void lcd1602_init (void)
 	// Cependant, pour les délais très courts (quelques microsecondes), esp_rom_delay_us est préférable car plus précis.
 
 	// Voir la documentation de l'écran LCD1602 pour les détails sur les délais.
-	// Exemple : https://www.waveshare.com/datasheet/LCD_en_PDF/LCD1602.pdf
 
 	// Un peut bizarre mais le fabricant demande de lancer la commande 0x30 trois fois pour s'assurer que l'écran est en mode 8 bits.
 	// Ensuite, on passe en mode 4 bits avec la commande 0x20.

@@ -11,6 +11,7 @@
 #include "photoresistor.h"
 #include "thermistor.h"
 #include "lcd1602.h"
+#include "servo.h"
 
 void app_main(void)
 {
@@ -53,4 +54,7 @@ void app_main(void)
 
     // components/lcd1602/lcd1602.c
     // start_demo_lcd1602_task();
+
+    // components/servo/servo.c
+    // start_demo_servo_task(GPIO_NUM_15);
 }

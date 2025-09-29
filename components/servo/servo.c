@@ -8,7 +8,9 @@
  * 
  * Attention de brancher le servo moteur à une source d'alimentation externe 5V.
  * 
- * ** Voir le component led_pwm pour une explication plus détaillée sur le PWM. **
+ * =============================================================================
+ * [!] Voir le component led_pwm pour une explication plus détaillée sur le PWM.
+ * =============================================================================
  *
  * Tutoriel original : Chapitre 18 - Servo (Freenove)
  */

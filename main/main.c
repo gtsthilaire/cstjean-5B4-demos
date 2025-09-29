@@ -1,3 +1,8 @@
+#include "esp_event.h"
+#include "esp_log.h"
+#include "esp_wifi.h"
+
+
 #include "led.h"
 #include "push_button.h"
 #include "led_bar.h"
@@ -12,6 +17,56 @@
 #include "thermistor.h"
 #include "lcd1602.h"
 #include "servo.h"
+#include "wifi_ap.h"
+#include "wifi_station.h"
+
+static const char* TAG = "exemples";
+
+static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+{
+    ESP_LOGI(TAG, "Événement Wi-Fi reçu (main): %ld", event_id);
+
+    if (event_base == WIFI_EVENT) {
+        switch (event_id) {
+            case WIFI_EVENT_STA_START:
+                ESP_LOGI(TAG, "WIFI: CONNECTING ...");
+                break;
+            case WIFI_EVENT_STA_DISCONNECTED:
+                ESP_LOGI(TAG, "WIFI: DISCONNECTED");
+                break;
+            default:
+                break;
+        }
+    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        ESP_LOGI(TAG, "WIFI: CONNECTED");
+    }
+}
+
+static void ap_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+{
+    ESP_LOGI(TAG, "Événement AP reçu (main): %ld", event_id);
+
+    if (event_base == WIFI_EVENT) {
+        switch (event_id) {
+            case WIFI_EVENT_AP_START:
+                ESP_LOGI(TAG, "UI: AP START");
+                break;
+            case WIFI_EVENT_AP_STOP:
+                ESP_LOGI(TAG, "UI: AP STOP");
+                break;
+            case WIFI_EVENT_AP_STACONNECTED: {
+                ESP_LOGI(TAG, "UI: STA CONNECTED");
+                break;
+            }
+            case WIFI_EVENT_AP_STADISCONNECTED: {
+                ESP_LOGI(TAG, "UI: STA DISCONNECTED");
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
 
 void app_main(void)
 {
@@ -57,4 +112,17 @@ void app_main(void)
 
     // components/servo/servo.c
     // start_demo_servo_task(GPIO_NUM_15);
+
+    // Les handlers doivent être enregistrés après l'initialisation de la pile TCP/IP
+    // et la création de la boucle d'événements.
+    // Pour simplifier, tout est fait dans la fonction wifi_start() et wifi_ap_start().
+    // Vous ne pouvez pas activer les deux modes en même temps (station et point d'accès)
+    // si vous utilisez cette méthode simplifiée.
+
+    // wifi_start("MON-POINT-D-ACCES", "monmotdepasse");
+    // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, NULL);
+    // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, NULL);
+
+    // wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
+    // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
 }

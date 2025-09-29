@@ -2,7 +2,9 @@
  * Démonstration de l'utilisation d'une LED RGB.
  * La LED RGB peut afficher différentes couleurs en combinant les lumières rouge, verte et bleue.
  *
- * ** Voir le component led_pwm pour une explication plus détaillée sur le PWM. **
+ * =============================================================================
+ * [!] Voir le component led_pwm pour une explication plus détaillée sur le PWM.
+ * =============================================================================
  *
  * Tutoriel original : Chapitre 5 - RGB LED (Freenove)
  */

@@ -3,7 +3,9 @@
  * Le buzzer émet un son toutes les X millisecondes.
  * Contrairement au buzzer actif, le buzzer passif nécessite une modulation de fréquence (PWM) pour émettre un son.
  *
- * ** Voir le component led_pwm pour une explication plus détaillée sur le PWM. **
+ * =============================================================================
+ * [!] Voir le component led_pwm pour une explication plus détaillée sur le PWM.
+ * =============================================================================
  *
  * Tutoriel original : Chapitre 7 - Buzzer (Freenove)
  * À noter que, contrairement au tutoriel, je n'ai pas fait de gestion de bouton pour activer/désactiver le buzzer.

@@ -3,9 +3,11 @@
  * Un WS2812 est plusieurs LEDs RGB adressablent individuellement.
  * Dans l'exemple, les pixels LED s'allument dans différentes couleurs.
  * 
- * Voir main/idf_component.yml pour les dépendances.
+ * =============================================================================
+ * [!] Voir main/idf_component.yml pour les dépendances.
  * https://components.espressif.com/components/espressif/led_strip
  * https://espressif.github.io/idf-extra-components/latest/led_strip/index.html
+ * =============================================================================
  * 
  * Tutoriel original : Chapitre 6 - LED pixel (Freenove)
  */

@@ -2,7 +2,9 @@
  * Démonstration de l'utilisation d'une thermistance.
  * Une thermistance est un composant dont la résistance varie en fonction de la température.
  *
- * ** Voir le component potentiometer pour une explication plus détaillée sur le ADC/DAC. **
+ * =======================================================================================
+ * [!] Voir le component potentiometer pour une explication plus détaillée sur le ADC/DAC.
+ * =======================================================================================
  *
  * Tutoriel original : Chapitre 13 - Thermistor (Freenove)
  */

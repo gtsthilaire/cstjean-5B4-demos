@@ -2,7 +2,9 @@
  * Démonstration de l'utilisation d'une photorésistance.
  * Une photorésistance est un composant dont la résistance varie en fonction de la lumière.
  *
- * ** Voir le component potentiometer pour une explication plus détaillée sur le ADC/DAC. **
+ * =======================================================================================
+ * [!] Voir le component potentiometer pour une explication plus détaillée sur le ADC/DAC.
+ * =======================================================================================
  *
  * Tutoriel original : Chapitre 12 - Photoresistor (Freenove)
  * À noter que, contrairement au tutoriel, je n'ai pas fait de gestion de LED en fonction de la luminosité ambiante.

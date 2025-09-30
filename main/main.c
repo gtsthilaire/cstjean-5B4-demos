@@ -49,17 +49,17 @@ static void ap_event_handler(void* arg, esp_event_base_t event_base, int32_t eve
     if (event_base == WIFI_EVENT) {
         switch (event_id) {
             case WIFI_EVENT_AP_START:
-                ESP_LOGI(TAG, "UI: AP START");
+                ESP_LOGI(TAG, "WIFI: AP START");
                 break;
             case WIFI_EVENT_AP_STOP:
-                ESP_LOGI(TAG, "UI: AP STOP");
+                ESP_LOGI(TAG, "WIFI: AP STOP");
                 break;
             case WIFI_EVENT_AP_STACONNECTED: {
-                ESP_LOGI(TAG, "UI: STA CONNECTED");
+                ESP_LOGI(TAG, "WIFI: STA CONNECTED");
                 break;
             }
             case WIFI_EVENT_AP_STADISCONNECTED: {
-                ESP_LOGI(TAG, "UI: STA DISCONNECTED");
+                ESP_LOGI(TAG, "WIFI: STA DISCONNECTED");
                 break;
             }
             default:
@@ -113,16 +113,28 @@ void app_main(void)
     // components/servo/servo.c
     // start_demo_servo_task(GPIO_NUM_15);
 
-    // Les handlers doivent être enregistrés après l'initialisation de la pile TCP/IP
-    // et la création de la boucle d'événements.
-    // Pour simplifier, tout est fait dans la fonction wifi_start() et wifi_ap_start().
-    // Vous ne pouvez pas activer les deux modes en même temps (station et point d'accès)
-    // si vous utilisez cette méthode simplifiée.
+    // * ======================================================================================================
+    // * [!] Les handlers doivent être enregistrés après l'initialisation de la pile TCP/IP
+    // * et la création de la boucle d'événements. On doit donc découper l'initialisation WiFi en deux fonctions:
+    // * - wifi_init() : Initialise la pile TCP/IP, la mémoire NVS, la boucle d'événements et l'interface réseau WiFi.
+    // * - wifi_start() : Configure le SSID et le mot de passe, enregistre les handlers et démarre le WiFi.
+    // * ======================================================================================================
 
-    // wifi_start("MON-POINT-D-ACCES", "monmotdepasse");
+    // components/wifi_station/wifi_station.c
+    // wifi_init();
     // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, NULL);
     // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, NULL);
+    // wifi_start("MON-POINT-D-ACCES", "monmotdepasse");
+    
+    // * ======================================================================================================
+    // * [!] Comme pour le WiFi en mode station, les handlers doivent être enregistrés après l'initialisation
+    // * de la pile TCP/IP et la création de la boucle d'événements. La mécanique actuelle ne nous permet pas
+    // * d'avoir les deux modes (station et AP) en même temps. Il faudrait modifier la logique pour permettre
+    // * d'initialiser la pile TCP/IP et la boucle d'événements qu'une seule fois.
+    // * ======================================================================================================
 
-    // wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
-    // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
+    // components/wifi_ap/wifi_ap.c
+    wifi_ap_init();
+    esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
+    wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
 }

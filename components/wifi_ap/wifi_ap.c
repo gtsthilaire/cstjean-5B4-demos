@@ -22,6 +22,8 @@
 
 static const char *TAG = "wifi_ap.c";
 
+static int s_sys_ready = false;
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
 {
@@ -65,11 +67,10 @@ static void event_handler(void* arg, esp_event_base_t event_base,
     }
 }
 
-void wifi_ap_start(const char* ssid, 
-                    const char* password, 
-                    int channel, 
-                    int max_conn)
+void wifi_ap_init(void)
 {
+    if (s_sys_ready) return;
+
     esp_err_t err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         nvs_flash_erase();
@@ -82,6 +83,16 @@ void wifi_ap_start(const char* ssid,
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&cfg);
+
+    s_sys_ready = true;
+}
+
+void wifi_ap_start(const char* ssid, 
+                    const char* password, 
+                    int channel, 
+                    int max_conn)
+{
+    if (!s_sys_ready) return;
 
     esp_event_handler_instance_register(WIFI_EVENT,
                                         ESP_EVENT_ANY_ID,

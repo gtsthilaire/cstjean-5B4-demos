@@ -16,6 +16,8 @@
 
 static const char *TAG = "wifi_station.c";
 
+static int s_sys_ready = false;
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
 {
@@ -41,12 +43,9 @@ static void event_handler(void* arg, esp_event_base_t event_base,
     }
 }
 
-void wifi_start(const char* ssid,
-                const char* password)
+void wifi_init(void)
 {
-    // Attention, certaines de ces étapes doivent être effectuées qu'une seule fois,
-    // généralement au démarrage de l'application. Pour faire simple, elles sont incluses ici.
-    // Dans une application réelle, vous devriez vérifier si elles ont déjà été faites.
+    if (s_sys_ready) return;
 
     // Initialisation de la mémoire NVS (Non-Volatile Storage)
     // Obligatoire pour le WiFi, car il utilise cette mémoire pour stocker
@@ -75,6 +74,14 @@ void wifi_start(const char* ssid,
     // Configuration par défaut du WiFi.
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&cfg);
+
+    s_sys_ready = true;
+}
+
+void wifi_start(const char* ssid,
+                const char* password)
+{
+    if (!s_sys_ready) return;
 
     // Enregistrement du gestionnaire d'événements pour les événements WiFi.
     esp_event_handler_instance_register(WIFI_EVENT,

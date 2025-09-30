@@ -45,7 +45,7 @@ static void photoresistor_task(void *arg)
 
         double voltage = (adc_raw / 4095.0) * 3.3;  // approximation simple
 
-        ESP_LOGI(TAG, "ADC(GPIO34): raw=%4d   V≈ %.2f V", adc_raw, voltage);
+        ESP_LOGI(TAG, "ADC: raw=%4d   V≈ %.2f V", adc_raw, voltage);
 
         vTaskDelay(pdMS_TO_TICKS(500));
     }

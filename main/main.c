@@ -17,6 +17,7 @@
 #include "thermistor.h"
 #include "lcd1602.h"
 #include "servo.h"
+#include "joystick.h"
 #include "wifi_ap.h"
 #include "wifi_station.h"
 
@@ -134,7 +135,10 @@ void app_main(void)
     // * ======================================================================================================
 
     // components/wifi_ap/wifi_ap.c
-    wifi_ap_init();
-    esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
-    wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
+    // wifi_ap_init();
+    // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
+    // wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
+
+    // components/joystick/joystick.c
+    // start_demo_joystick_task(ADC_CHANNEL_4, ADC_CHANNEL_5, GPIO_NUM_13);  // GPIO32 (X), GPIO33 (Y), GPIO13 (Z)
 }

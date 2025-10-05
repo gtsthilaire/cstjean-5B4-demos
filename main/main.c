@@ -1,8 +1,9 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
+#include "esp_random.h"
 
-
+#include "app_config.h"
 #include "led.h"
 #include "push_button.h"
 #include "led_bar.h"
@@ -20,9 +21,13 @@
 #include "joystick.h"
 #include "wifi_ap.h"
 #include "wifi_station.h"
+#include "web_server.h"
+#include "http_client.h"
 
 static const char* TAG = "exemples";
 
+// ===========================
+// Exemples pour la station Wi-Fi
 static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
     ESP_LOGI(TAG, "Événement Wi-Fi reçu (main): %ld", event_id);
@@ -43,6 +48,8 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
     }
 }
 
+// ===========================
+// Exemples pour le point d'accès Wi-Fi
 static void ap_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
     ESP_LOGI(TAG, "Événement AP reçu (main): %ld", event_id);
@@ -66,6 +73,53 @@ static void ap_event_handler(void* arg, esp_event_base_t event_base, int32_t eve
             default:
                 break;
         }
+    }
+}
+
+// ===========================
+// Exemples pour le serveur web
+static bool data_provider(float* out_data) 
+{
+    if (!out_data) return false;
+    // Valeur aléatoire entre 20.00 et 29.99 pour l'exemple. Ça pourrait être une lecture de capteur réel.
+    float t = 20.f + (esp_random() % 1000) / 100.f;
+    ESP_LOGI(TAG, "Donnée: %.2f", t);
+    *out_data = t;
+    return true;
+}
+
+static void webserver_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+{
+    ESP_LOGI(TAG, "Événement Wi-Fi reçu (main): %ld", event_id);
+
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
+        ESP_LOGI(TAG, "WIFI: DISCONNECTED");
+        web_server_stop();
+        ESP_LOGI(TAG, "Serveur web arrêté");
+    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        ESP_LOGI(TAG, "WIFI: CONNECTED");
+        web_server_set_data_provider(data_provider);
+        web_server_start();
+        ip_event_got_ip_t* e = (ip_event_got_ip_t*) event_data;   
+        ESP_LOGI(TAG, "Serveur web ouvert : http://" IPSTR "/", IP2STR(&e->ip_info.ip));
+    }
+}
+
+// ===========================
+// Exemples pour le client HTTP
+static void http_client_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+{
+    ESP_LOGI(TAG, "Événement Wi-Fi reçu (main): %ld", event_id);
+
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
+        ESP_LOGI(TAG, "WIFI: DISCONNECTED");
+        stop_demo_http_client_task();
+        ESP_LOGI(TAG, "Client HTTP arrêté");
+    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        ESP_LOGI(TAG, "WIFI: CONNECTED");
+        http_client_set_data_provider(data_provider, data_provider);
+        start_demo_http_client_task(TS_API_KEY, 20000); // Toutes les 20 secondes car Thingspeak n'accepte qu'une mise à jour toutes les 15 secondes au minimum.
+        ESP_LOGI(TAG, "Client HTTP démarré");
     }
 }
 
@@ -125,7 +179,7 @@ void app_main(void)
     // wifi_init();
     // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, NULL);
     // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, NULL);
-    // wifi_start("MON-POINT-D-ACCES", "monmotdepasse");
+    // wifi_start(WIFI_SSID, WIFI_PASSWORD);
     
     // * ======================================================================================================
     // * [!] Comme pour le WiFi en mode station, les handlers doivent être enregistrés après l'initialisation
@@ -137,8 +191,26 @@ void app_main(void)
     // components/wifi_ap/wifi_ap.c
     // wifi_ap_init();
     // esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &ap_event_handler, NULL, NULL);
-    // wifi_ap_start("MON-POINT-D-ACCES", "monmotdepasse", 1, 4);
+    // wifi_ap_start(WIFI_SSID, WIFI_PASSWORD, 1, 4);
 
     // components/joystick/joystick.c
     // start_demo_joystick_task(ADC_CHANNEL_4, ADC_CHANNEL_5, GPIO_NUM_13);  // GPIO32 (X), GPIO33 (Y), GPIO13 (Z)
+
+    // components/web_server/web_server.c
+    // * ======================================================================================================
+    // * [!] Voir l'exemple de la station Wi-Fi avant.
+    // * ======================================================================================================
+    // wifi_init();
+    // esp_event_handler_instance_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &webserver_event_handler, NULL, NULL);
+    // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &webserver_event_handler, NULL, NULL);
+    // wifi_start(WIFI_SSID, WIFI_PASSWORD);
+
+    // components/http_client/http_client.c
+    // * ======================================================================================================
+    // * [!] Voir l'exemple de la station Wi-Fi avant.
+    // * ======================================================================================================
+    // wifi_init();
+    // esp_event_handler_instance_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &http_client_event_handler, NULL, NULL);
+    // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &http_client_event_handler, NULL, NULL);
+    // wifi_start(WIFI_SSID, WIFI_PASSWORD);
 }

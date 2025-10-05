@@ -66,7 +66,7 @@ static void joystick_task(void *arg)
 
         ESP_LOGI(TAG, "X-axis: %4d, Y-axis: %4d, Z-axis: %d", adc_raw_x, adc_raw_y, button_state);
 
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 

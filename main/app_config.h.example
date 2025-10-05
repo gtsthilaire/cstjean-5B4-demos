@@ -1,0 +1,9 @@
+#ifndef APP_CONFIG_H
+#define APP_CONFIG_H
+
+#define WIFI_SSID       "MON-RESEAU-WIFI"
+#define WIFI_PASSWORD   "motdepasse"
+
+#define TS_API_KEY      "XXXXXXXXXX"
+
+#endif

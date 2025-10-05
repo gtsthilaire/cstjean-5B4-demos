@@ -7,3 +7,6 @@
 # Build
 build/
 managed_components/
+
+# Configs
+main/app_config.h

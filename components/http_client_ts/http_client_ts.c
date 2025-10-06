@@ -6,11 +6,12 @@
  * https://github.com/espressif/esp-idf/blob/master/examples/protocols/esp_http_client/main/esp_http_client_example.c
  */
 
-#include "http_client.h"
+#include "http_client_ts.h"
 #include "esp_http_client.h"
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "esp_crt_bundle.h"
 
 static const char* TAG = "http_client.c";
 
@@ -30,13 +31,17 @@ void http_client_set_data_provider(data_provider_t provider1, data_provider_t pr
 static esp_err_t ts_http_update(float value1, float value2) 
 {
     // Construire l'URL avec les données à envoyer.
-    // http://api.thingspeak.com/update?api_key=XXXXXXXXXX&field1=0.0&field2=0.0
-    // On devrait idéalement utiliser HTTPS. À voir plus tard.
+    // https://api.thingspeak.com/update?api_key=XXXXXXXXXX&field1=0.0&field2=0.0
     char url[512];
-    snprintf(url, sizeof(url), "http://api.thingspeak.com/update?api_key=%s&field1=%.2f&field2=%.2f",
+    snprintf(url, sizeof(url), "https://api.thingspeak.com/update?api_key=%s&field1=%.2f&field2=%.2f",
                      s_api_key, value1, value2);
 
-    esp_http_client_config_t http_client_config = {.url = url, .method = HTTP_METHOD_GET, .timeout_ms = 5000};
+    esp_http_client_config_t http_client_config = {
+        .url = url, 
+        .method = HTTP_METHOD_GET, 
+        .timeout_ms = 5000,
+        .crt_bundle_attach = esp_crt_bundle_attach
+    };
 
     esp_http_client_handle_t http_client_handle = esp_http_client_init(&http_client_config);
 
@@ -75,7 +80,7 @@ static void http_client_task(void* arg)
     }
 }
 
-void start_demo_http_client_task(char *api_key, uint32_t period_ms) 
+void start_demo_http_client_task(char* api_key, uint32_t period_ms) 
 {
     if (s_task) return;
     if (period_ms) s_period_ms = period_ms;

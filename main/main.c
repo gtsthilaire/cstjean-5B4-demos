@@ -2,6 +2,9 @@
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_random.h"
+#include "string.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 #include "app_config.h"
 #include "led.h"
@@ -22,7 +25,8 @@
 #include "wifi_ap.h"
 #include "wifi_station.h"
 #include "web_server.h"
-#include "http_client.h"
+#include "http_client_ts.h"
+#include "mqtt_aio.h"
 
 static const char* TAG = "exemples";
 
@@ -123,6 +127,40 @@ static void http_client_event_handler(void* arg, esp_event_base_t event_base, in
     }
 }
 
+// ===========================
+// Exemples pour MQTT
+static void mqtt_on_msg(const char* topic, size_t topic_len, const char* payload, size_t payload_len)
+{
+    ESP_LOGI(TAG, "Reçu MQTT [%.*s] => %.*s", topic_len, topic, payload_len, payload);
+}
+
+static void mqtt_pub_task(void* arg) 
+{
+    while(1) {
+        float value = 0.f;
+        if (data_provider(&value)) {
+            mqtt_publish_float(value, 0);
+        }
+        vTaskDelay(pdMS_TO_TICKS(5000));
+    }
+}
+
+static void mqtt_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+{
+    ESP_LOGI(TAG, "Événement Wi-Fi reçu (main): %ld", event_id);
+
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
+        ESP_LOGI(TAG, "WIFI: DISCONNECTED");
+        mqtt_stop();
+        ESP_LOGI(TAG, "Client MQTT arrêté");
+    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        ESP_LOGI(TAG, "WIFI: CONNECTED");
+        mqtt_set_message_callback(mqtt_on_msg);
+        mqtt_start(AIO_USER, AIO_KEY, "demo"); // Le feed "demo" doit être créé au préalable sur Adafruit IO.
+        ESP_LOGI(TAG, "Client MQTT démarré");
+    }
+}
+
 void app_main(void)
 {
     // components/led/led.c
@@ -213,4 +251,14 @@ void app_main(void)
     // esp_event_handler_instance_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &http_client_event_handler, NULL, NULL);
     // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &http_client_event_handler, NULL, NULL);
     // wifi_start(WIFI_SSID, WIFI_PASSWORD);
+
+    // components/mqtt_client/mqtt_client.c
+    // * ======================================================================================================
+    // * [!] Voir l'exemple de la station Wi-Fi avant.
+    // * ======================================================================================================
+    // wifi_init();
+    // esp_event_handler_instance_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &mqtt_event_handler, NULL, NULL);
+    // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &mqtt_event_handler, NULL, NULL);
+    // wifi_start(WIFI_SSID, WIFI_PASSWORD);
+    // xTaskCreate(mqtt_pub_task, "mqtt_pub_task", 4096, NULL, 5, NULL); // Ici, on simule un autre component qui publie périodiquement des données via MQTT.
 }

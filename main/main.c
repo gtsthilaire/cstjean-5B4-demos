@@ -27,6 +27,7 @@
 #include "web_server.h"
 #include "http_client_ts.h"
 #include "mqtt_aio.h"
+#include "led_matrix.h"
 
 static const char* TAG = "exemples";
 
@@ -261,4 +262,7 @@ void app_main(void)
     // esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &mqtt_event_handler, NULL, NULL);
     // wifi_start(WIFI_SSID, WIFI_PASSWORD);
     // xTaskCreate(mqtt_pub_task, "mqtt_pub_task", 4096, NULL, 5, NULL); // Ici, on simule un autre component qui publie périodiquement des données via MQTT.
+
+    // components/led_matrix/led_matrix.c
+    // start_demo_led_matrix_timer(GPIO_NUM_15, GPIO_NUM_4, GPIO_NUM_2);
 }

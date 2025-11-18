@@ -58,8 +58,8 @@ static void camera_init()
         .ledc_timer = LEDC_TIMER_0,
         .ledc_channel = LEDC_CHANNEL_0,
 
-        .pixel_format = PIXFORMAT_GRAYSCALE,
-        .frame_size = FRAMESIZE_QVGA,
+        .pixel_format = PIXFORMAT_JPEG,
+        .frame_size = FRAMESIZE_QVGA, // 320x240
 
         .jpeg_quality = 12,
         .fb_count = 1,
@@ -76,7 +76,9 @@ static void camera_task(void *arg)
         ESP_LOGI(TAG, "Taking picture...");
         camera_fb_t *pic = esp_camera_fb_get();
 
-        ESP_LOGI(TAG, "Picture taken! Its size was: %zu bytes", pic->len);
+        ESP_LOGI(TAG, "Format = %s", (pic->format == PIXFORMAT_JPEG) ? "JPEG" : "RAW");
+        ESP_LOGI(TAG, "Taille = %d bytes", pic->len);
+        ESP_LOGI(TAG, "Dimensions = %dx%d", pic->width, pic->height);
 
         esp_camera_fb_return(pic); // Libérer la mémoire
 

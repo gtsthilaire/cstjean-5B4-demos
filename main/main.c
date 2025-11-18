@@ -28,6 +28,7 @@
 #include "http_client_ts.h"
 #include "mqtt_aio.h"
 #include "led_matrix.h"
+#include "camera.h"
 
 static const char* TAG = "exemples";
 
@@ -304,4 +305,7 @@ void app_main(void)
 
     // components/led_matrix/led_matrix.c
     // start_demo_led_matrix_timer(GPIO_NUM_15, GPIO_NUM_4, GPIO_NUM_2);
+
+    // components/camera/camera.c
+    // start_demo_camera_task();
 }

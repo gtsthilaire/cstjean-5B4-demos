@@ -9,6 +9,15 @@ Plusieurs éléments sont démontrés en classe et **ce dépôt ne constitue pas
 Ces exemples sont fournis **à titre pédagogique uniquement**. Ils visent à illustrer des concepts de programmation embarquée et d’objets connectés. Ils ne sont **pas validés pour un usage en production** et peuvent contenir des erreurs ou des **simplifications volontairement**. Par exemple, les vérifications d’erreurs et la gestion des retours de fonctions ne sont pas systématiquement implémentées. Ce choix est volontaire afin de garder le code clair et accessible pour l’apprentissage. L’objectif est d’apprendre les bases. Pas de fournir des applications prêtes à l’emploi.
 
 
+## Structure du projet
+
+```
+components/<nom>/        -> logique réutilisable d'un capteur/actionneur (ex: components/led/)
+main/demos/NN-<nom>.c/.h -> une démo = un scénario d'usage, numéroté selon les chapitres de Freenove
+main/main.c              -> appelle la fonction *_start_demo() de la démo active
+```
+
+
 ## Références utiles
 
 [Tutoriel Freenove](https://docs.freenove.com/projects/fnk0047/en/latest/fnk0047/codes/C.html)

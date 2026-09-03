@@ -1,6 +1,0 @@
-dependencies:
-  idf:
-    version: '>=4.1.0'
-  espressif/led_strip: ^3.0.1
-  espressif/esp32-camera:
-    version: "*"

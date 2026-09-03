@@ -1,42 +1,64 @@
-/**
- * Démonstration de l'utilisation d'une LED simple.
- * La LED s'allume et s'éteint toutes les X millisecondes.
- *
- * Tutoriel original : Chapitre 1 - LED (Freenove)
- */
-
 #include "led.h"
 #include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
-static const char *TAG = "led.c";
+static const char *TAG = "components/led";
 
-static gpio_num_t s_led_gpio = -1;
-
-static void led_init(gpio_num_t gpio)
+led_t led_init(gpio_num_t gpio)
 {
-    s_led_gpio = gpio;
-    gpio_reset_pin(s_led_gpio);
-    gpio_set_direction(s_led_gpio, GPIO_MODE_OUTPUT);
+    ESP_LOGI(TAG, "Configuration du GPIO %d en sortie", gpio);
+    gpio_reset_pin(gpio);
+    gpio_set_direction(gpio, GPIO_MODE_OUTPUT);
+
+    return (led_t){ .gpio = gpio, .is_on = false, .blink_timer = NULL };
 }
 
-static void led_task(void *arg)
+void led_set(led_t *led, bool on)
 {
-    while (1) {
-        ESP_LOGI(TAG, "Led ON");
-        gpio_set_level(s_led_gpio, 1);
-        vTaskDelay(pdMS_TO_TICKS(500));
-
-        ESP_LOGI(TAG, "Led OFF");
-        gpio_set_level(s_led_gpio, 0);
-        vTaskDelay(pdMS_TO_TICKS(500));
+    if (led == NULL) {
+        return;
     }
+
+    ESP_LOGI(TAG, "LED (GPIO %d): %s", led->gpio, on ? "ON" : "OFF");
+    led->is_on = on;
+    gpio_set_level(led->gpio, on);
 }
 
-void start_demo_led_task(gpio_num_t gpio)
+static void blink_timer_callback(void *arg)
 {
-    led_init(gpio);
+    led_t *led = (led_t *)arg;
+    led_set(led, !led->is_on);
+}
 
-    xTaskCreate(led_task, "led_task", 2048, NULL, 5, NULL);
+void led_start_blinking(led_t *led, uint32_t interval_ms)
+{
+    if (led == NULL || interval_ms == 0) {
+        return;
+    }
+
+    if (led->blink_timer == NULL) {
+        const esp_timer_create_args_t timer_args = {
+            .callback = &blink_timer_callback,
+            .arg = led,
+            .name = "led_blink",
+        };
+        esp_timer_create(&timer_args, &led->blink_timer);
+    }
+
+    esp_timer_stop(led->blink_timer); // Pour réinitialiser le timer s'il était déjà en cours
+
+    ESP_LOGI(TAG, "LED (GPIO %d): clignotement démarré", led->gpio);
+
+    led_set(led, true); // Pour allumer la LED immédiatement
+    esp_timer_start_periodic(led->blink_timer, (uint64_t)interval_ms * 1000);
+}
+
+void led_stop_blinking(led_t *led)
+{
+    if (led == NULL || led->blink_timer == NULL) {
+        return;
+    }
+
+    esp_timer_stop(led->blink_timer);
+    ESP_LOGI(TAG, "LED (GPIO %d): clignotement arrêté", led->gpio);
+    led_set(led, false);
 }

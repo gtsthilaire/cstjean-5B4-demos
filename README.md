@@ -14,7 +14,7 @@ Ces exemples sont fournis **à titre pédagogique uniquement**. Ils visent à il
 ```
 components/<nom>/        -> logique réutilisable d'un capteur/actionneur (ex: components/led/)
 main/demos/NN-<nom>.c/.h -> une démo = un scénario d'usage, numéroté selon les chapitres de Freenove
-main/main.c              -> appelle la fonction *_start_demo() de la démo active
+main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la démo active
 ```
 
 

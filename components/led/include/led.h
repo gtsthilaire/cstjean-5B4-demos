@@ -12,7 +12,7 @@ typedef struct {
     esp_timer_handle_t blink_timer;
 } led_t;
 
-// Configure le GPIO en sortie et retourne un led_t prêt à l'emploi.
+// Configure le GPIO en sortie et retourne un led_t.
 led_t led_init(gpio_num_t gpio);
 
 // Allume (true) ou éteint (false) la LED immédiatement.

@@ -21,11 +21,8 @@ static void led_task(void *arg)
     }
 }
 
-void led_start_demo(void)
+void start_demo_01_led(void)
 {
-    // "static" est essentiel ici : la tâche créée ci-dessous garde un pointeur
-    // vers "led" bien après le retour de cette fonction. Sans "static", "led"
-    // serait détruite avec la pile de led_start_demo().
     static led_t led;
     led = led_init(GPIO_NUM_2);
 

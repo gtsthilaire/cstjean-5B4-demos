@@ -5,4 +5,4 @@
  * Tutoriel original : Chapitre 1 - LED (Freenove)
  */
 
-void led_start_demo(void);
+void start_demo_01_led(void);

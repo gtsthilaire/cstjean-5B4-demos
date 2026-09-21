@@ -6,6 +6,8 @@
 
 static const char *TAG = "demos/01-led";
 
+#define LED_GPIO GPIO_NUM_2
+
 static void led_task(void *arg)
 {
     led_t *led = (led_t *)arg;
@@ -24,7 +26,7 @@ static void led_task(void *arg)
 void start_demo_01_led(void)
 {
     static led_t led;
-    led = led_init(GPIO_NUM_2);
+    led = led_init(LED_GPIO);
 
     // Voir aussi led_start_blinking plutôt que de créer une tâche pour faire clignoter la LED
     xTaskCreate(led_task, "01-led_task", 2048, &led, 1, NULL);

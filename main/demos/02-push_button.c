@@ -6,6 +6,8 @@
 
 static const char *TAG = "demos/02-push_button";
 
+#define PUSH_BUTTON_GPIO GPIO_NUM_13
+
 static void push_button_task(void *arg)
 {
     push_button_t *push_button = (push_button_t *)arg;
@@ -31,7 +33,7 @@ static void push_button_task(void *arg)
 void start_demo_02_push_button(void)
 {
     static push_button_t push_button;
-    push_button = push_button_init(GPIO_NUM_13);
+    push_button = push_button_init(PUSH_BUTTON_GPIO);
 
     xTaskCreate(push_button_task, "02-push_button_task", 2048, &push_button, 1, NULL);
 }

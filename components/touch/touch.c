@@ -67,26 +67,16 @@ touch_t touch_init(gpio_num_t gpio)
         TOUCH_SENSOR_V1_DEFAULT_SAMPLE_CONFIG(5.0, TOUCH_VOLT_LIM_L_0V5, TOUCH_VOLT_LIM_H_1V7),
     };
     touch_sensor_config_t sensor_config = TOUCH_SENSOR_DEFAULT_BASIC_CONFIG(1, sample_config);
-    esp_err_t err = touch_sensor_new_controller(&sensor_config, &touch.sensor);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Impossible de configurer le contrôleur tactile : %s", esp_err_to_name(err));
-        touch.sensor = NULL;
-        return touch;
-    }
+    touch_sensor_new_controller(&sensor_config, &touch.sensor);
 
-    // Canal : le seuil du matériel (abs_active_thresh) n'est pas utilisé ici, on compare nous-mêmes avec touch.threshold
+    // Canal : le seuil du matériel (abs_active_thresh) n'est pas utilisé ici, on compare nous-mêmes avec nos deux seuils
     touch_channel_config_t channel_config = {
         .abs_active_thresh = { 0 },
         .charge_speed = TOUCH_CHARGE_SPEED_7,
         .init_charge_volt = TOUCH_INIT_CHARGE_VOLT_DEFAULT,
         .group = TOUCH_CHAN_TRIG_GROUP_BOTH,
     };
-    err = touch_sensor_new_channel(touch.sensor, channel_id, &channel_config, &touch.channel);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Impossible de configurer le canal tactile T%d : %s", channel_id, esp_err_to_name(err));
-        touch.channel = NULL;
-        return touch;
-    }
+    touch_sensor_new_channel(touch.sensor, channel_id, &channel_config, &touch.channel);
 
     // Filtre logiciel : lisse les mesures (toutes les 10 ms) pour réduire le bruit
     touch_sensor_filter_config_t filter_config = TOUCH_SENSOR_DEFAULT_FILTER_CONFIG();

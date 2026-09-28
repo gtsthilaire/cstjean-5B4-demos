@@ -46,13 +46,7 @@ led_pixel_t led_pixel_init(gpio_num_t gpio, size_t count)
     };
 
     led_pixel_t led_pixel = { .strip = NULL, .count = count, .brightness = 255 };
-    esp_err_t err = led_strip_new_rmt_device(&strip_config, &rmt_config, &led_pixel.strip);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Impossible de configurer le module WS2812 : %s", esp_err_to_name(err));
-        led_pixel.strip = NULL;
-        return led_pixel;
-    }
-
+    led_strip_new_rmt_device(&strip_config, &rmt_config, &led_pixel.strip);
     led_strip_clear(led_pixel.strip);
 
     return led_pixel;
@@ -69,7 +63,7 @@ void led_pixel_set_brightness(led_pixel_t *led_pixel, uint8_t brightness)
 
 void led_pixel_set(led_pixel_t *led_pixel, size_t index, uint8_t r, uint8_t g, uint8_t b)
 {
-    if (led_pixel == NULL || led_pixel->strip == NULL || index >= led_pixel->count) {
+    if (led_pixel == NULL || index >= led_pixel->count) {
         return;
     }
 
@@ -85,7 +79,7 @@ void led_pixel_set(led_pixel_t *led_pixel, size_t index, uint8_t r, uint8_t g, u
 // varier un seul nombre. La saturation est au maximum (couleur pure) et la valeur (intensité) = luminosité globale.
 void led_pixel_set_hsv(led_pixel_t *led_pixel, size_t index, uint16_t hue)
 {
-    if (led_pixel == NULL || led_pixel->strip == NULL || index >= led_pixel->count) {
+    if (led_pixel == NULL || index >= led_pixel->count) {
         return;
     }
 
@@ -94,7 +88,7 @@ void led_pixel_set_hsv(led_pixel_t *led_pixel, size_t index, uint16_t hue)
 
 void led_pixel_show(led_pixel_t *led_pixel)
 {
-    if (led_pixel == NULL || led_pixel->strip == NULL) {
+    if (led_pixel == NULL) {
         return;
     }
 
@@ -103,7 +97,7 @@ void led_pixel_show(led_pixel_t *led_pixel)
 
 void led_pixel_clear(led_pixel_t *led_pixel)
 {
-    if (led_pixel == NULL || led_pixel->strip == NULL) {
+    if (led_pixel == NULL) {
         return;
     }
 

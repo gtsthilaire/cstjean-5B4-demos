@@ -41,8 +41,8 @@ Un chapitre est considéré comme fait même s'il manque un composant, lorsque c
 | 12 | Photoresistor & LED | ✅ | `12-photoresistor` | Sans LED (voir `04-led_pwm`) |
 | 13 | Thermistor | ✅ | `13-thermistor` | Avec calibration de l'ADC |
 | 14 | Joystick | ✅ | `14-joystick` | Position en pourcentage |
-| 15 | 74HC595 & LED Bar Graph | ❌ | | |
-| 16 | 74HC595 & 7-Segment Display | ❌ | | |
+| 15 | 74HC595 & LED Bar Graph | ✅ | `15-led_bar_74hc595` | 8 des 10 LED (le 74HC595 a 8 sorties) |
+| 16 | 74HC595 & 7-Segment Display | ✅ | `16-seven_segment` | Compte de 0 à F |
 | 16 | 74HC595 & LED Matrix | ✅ | `16-led_matrix` | |
 | 17 | Relay & Motor | ❌ | | |
 | 17 | Motor & Driver | ❌ | | |

@@ -1,19 +1,11 @@
 /**
  * Matrice de 8x8 LED contrôlée avec deux 74HC595.
  *
- * Un 74HC595 permet de contrôler plusieurs sorties numériques en utilisant seulement 3 broches GPIO.
- * Dans notre cas, nous en utilisons deux (branchés en cascade) pour contrôler 64 LED. Un pour les rangées et
- * l'autre pour les colonnes.
+ * Voir components/led_bar_74hc595 pour le fonctionnement du 74HC595.
  *
- * Le 74HC595 est un registre à décalage (shift register). Il permet de convertir des données série en données
- * parallèles. Il fonctionne comme une file de bits : on lui envoie un bit à la fois, il décale les précédents
- * et au bout d'un moment (8 bits), on a une série de bits stockés à l'intérieur afin de les utiliser.
- * Quand on envoie plus de 8 bits, les bits qui « débordent » passent au deuxième 74HC595.
- *
- * Il fonctionne avec 3 GPIO :
- * - Données (Data) : les bits sont envoyés un par un sur cette broche. Ils sont stockés dans le registre.
- * - Horloge (Clock) : chaque impulsion fait entrer le bit présent sur Data dans le registre.
- * - Verrou (Latch) : il copie le contenu du registre sur les sorties (les LED changent à ce moment-là).
+ * Ici, on en utilise deux, branchés en cascade, pour contrôler 64 LED : un pour les rangées et l'autre pour
+ * les colonnes. On envoie 16 bits : quand on envoie plus de 8 bits, les bits qui « débordent » du premier
+ * 74HC595 passent au deuxième.
  *
  * Dans la matrice, chaque LED a son anode (côté positif) connectée à une rangée et sa cathode (côté négatif)
  * connectée à une colonne. Pour allumer une LED spécifique, on doit activer la rangée correspondante

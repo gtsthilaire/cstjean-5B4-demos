@@ -12,9 +12,11 @@ idf_component_register(SRCS "main.c"
                              "demos/12-photoresistor.c"
                              "demos/13-thermistor.c"
                              "demos/14-joystick.c"
+                             "demos/15-led_bar_74hc595.c"
+                             "demos/16-seven_segment.c"
                              "demos/16-led_matrix.c"
                              "demos/20-lcd1602.c"
                              "demos/32-wifi_station.c"
                              "demos/32-wifi_ap.c"
                         INCLUDE_DIRS "."
-                        REQUIRES led push_button led_bar led_pwm led_rgb led_pixel buzzer_active buzzer_passive potentiometer touch photoresistor thermistor joystick led_matrix lcd1602 wifi esp_event esp_wifi)
+                        REQUIRES led push_button led_bar led_pwm led_rgb led_pixel buzzer_active buzzer_passive potentiometer touch photoresistor thermistor joystick led_bar_74hc595 seven_segment led_matrix lcd1602 wifi esp_event esp_wifi)

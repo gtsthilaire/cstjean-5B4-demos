@@ -20,13 +20,11 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 
 ## Chapitres du tutoriel Freenove
 
-✅ fait · 🟡 fait en partie · ❌ pas fait
-
-Un chapitre est considéré comme fait même s'il manque un composant, lorsque ce composant est traité dans une autre démo.
+✅ fait · 🟡 fait en partie · 🔧 en révision · ❌ pas fait
 
 | Ch. | Sujet (Freenove) | État | Démo(s) | Notes |
 |----:|------------------|:----:|---------|-------|
-| 0 | LED | ❌ | | |
+| 0 | LED | 🟡 | | Redondant : voir `01-led` (même code, avec la LED de la carte) |
 | 1 | LED | ✅ | `01-led` | |
 | 2 | Button & LED | ✅ | `02-push_button` | Sans LED (voir `01-led`) |
 | 3 | LED Bar | ✅ | `03-led_bar` | Effet bargraph en plus |
@@ -34,10 +32,10 @@ Un chapitre est considéré comme fait même s'il manque un composant, lorsque c
 | 5 | RGB LED | 🟡 | `05-led_rgb` | Pas de couleurs aléatoires |
 | 6 | LEDPixel | ✅ | `06-led_pixel` | |
 | 7 | Buzzer | ✅ | `07-buzzer_active`, `07-buzzer_passive` | Sans bouton (voir `02-push_button`) |
-| 8 | Serial Communication | ❌ | | |
+| 8 | Serial Communication | 🟡 | | Affichage : `ESP_LOGI` dans toutes les démos. Lecture du port série pas faite |
 | 9 | AD/DA Converter | 🟡 | `09-potentiometer` | Partie ADC seulement (pas de DAC) |
 | 10 | Touch Sensor | ✅ | `10-touch` | Sans LED (voir `01-led`) |
-| 11 | Potentiometer & LED | ❌ | | |
+| 11 | Potentiometer & LED | 🟡 | | Redondant : voir `09-potentiometer` et `04-led_pwm` |
 | 12 | Photoresistor & LED | ✅ | `12-photoresistor` | Sans LED (voir `04-led_pwm`) |
 | 13 | Thermistor | ✅ | `13-thermistor` | Avec calibration de l'ADC |
 | 14 | Joystick | ✅ | `14-joystick` | Position en pourcentage |
@@ -46,7 +44,7 @@ Un chapitre est considéré comme fait même s'il manque un composant, lorsque c
 | 16 | 74HC595 & LED Matrix | ✅ | `16-led_matrix` | |
 | 17 | Relay & Motor | ❌ | | |
 | 17 | Motor & Driver | ❌ | | |
-| 18 | Servo | ❌ | | En révision |
+| 18 | Servo | 🔧 | | |
 | 19 | Stepper Motor | ❌ | | |
 | 20 | LCD1602 | ✅ | `20-lcd1602` | |
 | 21 | Ultrasonic Ranging | ❌ | | |
@@ -61,8 +59,8 @@ Un chapitre est considéré comme fait même s'il manque un composant, lorsque c
 | 30 | Read and Write the Sdcard | ❌ | | |
 | 31 | Play SD card music | ❌ | | |
 | 32 | WiFi Working Modes | ✅ | `32-wifi_station`, `32-wifi_ap` | Projets 32.1 (Station) et 32.2 (AP) |
-| 33 | TCP/IP | ❌ | | En révision |
-| 34 | Camera Web Server | ❌ | | En révision |
+| 33 | TCP/IP | 🔧 | | |
+| 34 | Camera Web Server | 🔧 | | |
 | 35 | Camera Tcp Server | ❌ | | |
 | 36 | Soldering Circuit Board | ❌ | | |
 

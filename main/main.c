@@ -1,14 +1,38 @@
 #include "demos/01-led.h"
 #include "demos/02-push_button.h"
+#include "demos/03-led_bar.h"
 #include "demos/04-led_pwm.h"
+#include "demos/05-led_rgb.h"
+#include "demos/06-led_pixel.h"
+#include "demos/07-buzzer_active.h"
+#include "demos/07-buzzer_passive.h"
 #include "demos/09-potentiometer.h"
+#include "demos/10-touch.h"
+#include "demos/12-photoresistor.h"
+#include "demos/13-thermistor.h"
+#include "demos/14-joystick.h"
+#include "demos/16-led_matrix.h"
 #include "demos/20-lcd1602.h"
+#include "demos/32-wifi_station.h"
+#include "demos/32-wifi_ap.h"
 
 void app_main(void)
 {
     // start_demo_01_led();
     // start_demo_02_push_button();
-    start_demo_04_led_pwm();
+    // start_demo_03_led_bar();
+    // start_demo_04_led_pwm();
+    // start_demo_05_led_rgb();
+    // start_demo_06_led_pixel();
+    // start_demo_07_buzzer_active();
+    // start_demo_07_buzzer_passive();
     // start_demo_09_potentiometer();
+    // start_demo_10_touch();
+    // start_demo_12_photoresistor();
+    // start_demo_13_thermistor();
+    // start_demo_14_joystick();
+    // start_demo_16_led_matrix();
     // start_demo_20_lcd1602();
+    // start_demo_32_wifi_station();
+    // start_demo_32_wifi_ap();
 }

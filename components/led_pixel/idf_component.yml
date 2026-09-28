@@ -1,0 +1,4 @@
+# Dépendance téléchargée automatiquement par le gestionnaire de composants d'ESP-IDF (dans managed_components/).
+# https://components.espressif.com/components/espressif/led_strip
+dependencies:
+  espressif/led_strip: ^3.0.1

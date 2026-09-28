@@ -22,9 +22,9 @@ static const char *TAG = "components/led_pwm";
 //   - 5 kHz+  : idéal pour LED visibles sans scintillement, moteurs plus silencieux.
 #define LEDC_FREQ_HZ 5000
 
-led_pwm_t led_pwm_init(gpio_num_t gpio, ledc_channel_t channel)
+led_pwm_t led_pwm_init(gpio_num_t gpio, ledc_channel_t channel, bool inverted)
 {
-    ESP_LOGI(TAG, "Configuration du GPIO %d en sortie PWM (canal %d)", gpio, channel);
+    ESP_LOGI(TAG, "Configuration du GPIO %d en sortie PWM (canal %d%s)", gpio, channel, inverted ? ", inversé" : "");
 
     // Configuration du timer LEDC
     // Le timer détermine la fréquence et la résolution du signal PWM.
@@ -53,6 +53,10 @@ led_pwm_t led_pwm_init(gpio_num_t gpio, ledc_channel_t channel)
         .channel = channel,
         .timer_sel = LEDC_TIMER_NUM,
         .duty = 0, // démarre éteinte
+        // Inversion matérielle de la sortie : le LEDC génère le signal PWM normalement, puis une porte "NOT" l'inverse
+        // juste avant la broche. Le GPIO est donc à LOW pendant la partie "active" du cycle au lieu de HIGH.
+        // Elle s'applique dès la configuration du canal, donc une LED active à LOW ne s'allume pas au démarrage.
+        .flags.output_invert = inverted,
     };
     ledc_channel_config(&channel_config);
 

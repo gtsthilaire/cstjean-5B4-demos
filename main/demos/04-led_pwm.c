@@ -31,7 +31,7 @@ static void led_pwm_task(void *arg)
 void start_demo_04_led_pwm(void)
 {
     static led_pwm_t led_pwm;
-    led_pwm = led_pwm_init(LED_PWM_GPIO, LED_PWM_CHANNEL);
+    led_pwm = led_pwm_init(LED_PWM_GPIO, LED_PWM_CHANNEL, false);
 
     xTaskCreate(led_pwm_task, "04-led_pwm_task", 2048, &led_pwm, 1, NULL);
 }

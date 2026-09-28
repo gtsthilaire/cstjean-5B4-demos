@@ -1,6 +1,7 @@
 #ifndef LED_PWM_H
 #define LED_PWM_H
 
+#include <stdbool.h>
 #include <stdint.h>
 #include "driver/gpio.h"
 #include "driver/ledc.h"
@@ -14,7 +15,9 @@ typedef struct {
 } led_pwm_t;
 
 // Configure le timer LEDC et associe le GPIO au canal PWM donné. La LED démarre éteinte.
-led_pwm_t led_pwm_init(gpio_num_t gpio, ledc_channel_t channel);
+// inverted = true pour une LED active à LOW (ex : LED RGB à anode commune) : le signal est inversé par le matériel,
+// donc le duty garde le même sens (0 = éteinte) dans les deux cas.
+led_pwm_t led_pwm_init(gpio_num_t gpio, ledc_channel_t channel, bool inverted);
 
 // Règle le rapport cyclique (0..LED_PWM_DUTY_MAX) : 0 = éteinte, LED_PWM_DUTY_MAX = luminosité maximale.
 void led_pwm_set_duty(led_pwm_t *led_pwm, uint32_t duty);

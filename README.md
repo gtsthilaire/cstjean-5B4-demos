@@ -54,7 +54,7 @@ Un chapitre est considéré comme fait même s'il manque un composant, lorsque c
 | 23 | Infrared Remote | ❌ | | |
 | 24 | Hygrothermograph DHT11 | ❌ | | |
 | 25 | Infrared Motion Sensor | ❌ | | |
-| 26 | Attitude Sensor MPU6050 | ❌ | | |
+| 26 | Attitude Sensor MPU6050 | ✅ | `26-mpu6050` | |
 | 27 | Bluetooth | ❌ | | |
 | 28 | Bluetooth Media by DAC | ❌ | | |
 | 29 | Bluetooth Media by Audio Module | ❌ | | |

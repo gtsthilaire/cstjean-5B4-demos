@@ -1,0 +1,49 @@
+# Menu affiché dans « idf.py menuconfig » → « Configuration des exemples ».
+# Les valeurs saisies sont enregistrées dans sdkconfig (ignoré par git) : les secrets ne sont donc jamais commités.
+# Dans le code, on y accède avec le préfixe CONFIG_ (ex : CONFIG_EXEMPLES_WIFI_SSID).
+
+menu "Configuration des exemples"
+
+    config EXEMPLES_WIFI_SSID
+        string "SSID du réseau Wi-Fi"
+        default "MON-RESEAU-WIFI"
+        help
+            Nom du réseau Wi-Fi auquel l'ESP32 se connecte (mode station).
+
+    config EXEMPLES_WIFI_PASSWORD
+        string "Mot de passe du réseau Wi-Fi"
+        default "motdepasse"
+        help
+            Mot de passe du réseau Wi-Fi auquel l'ESP32 se connecte. Laisser vide pour un réseau ouvert.
+
+    config EXEMPLES_AP_SSID
+        string "SSID du point d'accès"
+        default "ESP32-DEMO"
+        help
+            Nom du réseau Wi-Fi créé par l'ESP32 (mode point d'accès, démo 32-wifi_ap).
+
+    config EXEMPLES_AP_PASSWORD
+        string "Mot de passe du point d'accès"
+        default "12345678"
+        help
+            Mot de passe du réseau créé par l'ESP32 (8 caractères minimum). Laisser vide pour un réseau ouvert.
+
+    config EXEMPLES_TS_API_KEY
+        string "Clé d'API ThingSpeak (Write API Key)"
+        default "XXXXXXXXXX"
+        help
+            Clé d'écriture du canal ThingSpeak utilisé par la démo du client HTTP.
+
+    config EXEMPLES_AIO_USER
+        string "Nom d'utilisateur Adafruit IO"
+        default "XXXXXXXXXX"
+        help
+            Nom d'utilisateur Adafruit IO utilisé par la démo MQTT.
+
+    config EXEMPLES_AIO_KEY
+        string "Clé Adafruit IO"
+        default "XXXXXXXXXX"
+        help
+            Clé Adafruit IO (AIO Key) utilisée par la démo MQTT.
+
+endmenu

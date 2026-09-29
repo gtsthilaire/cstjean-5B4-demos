@@ -18,6 +18,7 @@
 #include "demos/26-mpu6050.h"
 #include "demos/32-wifi_station.h"
 #include "demos/32-wifi_ap.h"
+#include "demos/33-web_server.h"
 
 void app_main(void)
 {
@@ -41,4 +42,5 @@ void app_main(void)
     // start_demo_26_mpu6050();
     // start_demo_32_wifi_station();
     // start_demo_32_wifi_ap();
+    // start_demo_33_web_server();
 }

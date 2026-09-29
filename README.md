@@ -59,7 +59,7 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 30 | Read and Write the Sdcard | ❌ | | |
 | 31 | Play SD card music | ❌ | | |
 | 32 | WiFi Working Modes | ✅ | `32-wifi_station`, `32-wifi_ap` | Projets 32.1 (Station) et 32.2 (AP) |
-| 33 | TCP/IP | 🔧 | | |
+| 33 | TCP/IP | 🔧 | `33-web_server` | web_server révisé ; http_client et mqtt en révision |
 | 34 | Camera Web Server | 🔧 | | |
 | 35 | Camera Tcp Server | ❌ | | |
 | 36 | Soldering Circuit Board | ❌ | | |

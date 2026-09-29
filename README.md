@@ -59,13 +59,13 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 30 | Read and Write the Sdcard | ❌ | | |
 | 31 | Play SD card music | ❌ | | |
 | 32 | WiFi Working Modes | ✅ | `32-wifi_station`, `32-wifi_ap` | Projets 32.1 (Station) et 32.2 (AP) |
-| 33 | TCP/IP | 🔧 | `33-web_server`, `33-http_client` | web_server et http_client révisés ; mqtt en révision |
+| 33 | TCP/IP | 🟡 | `33-web_server`, `33-http_client`, `33-mqtt` | Pas de TCP brut : serveur web, client HTTP (ThingSpeak) et MQTT (Adafruit IO) |
 | 34 | Camera Web Server | 🔧 | | |
 | 35 | Camera Tcp Server | ❌ | | |
 | 36 | Soldering Circuit Board | ❌ | | |
 
 
-## Configuration (Wi-Fi, ThingSpeak)
+## Configuration (Wi-Fi, ThingSpeak, Adafruit IO)
 
 Les démos réseau lisent leurs paramètres (SSID, mot de passe, clés d'API) dans le menu de configuration,
 section **Configuration des exemples**. Cette section est définie dans [main/Kconfig.projbuild](main/Kconfig.projbuild) :

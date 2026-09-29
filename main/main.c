@@ -20,6 +20,7 @@
 #include "demos/32-wifi_ap.h"
 #include "demos/33-web_server.h"
 #include "demos/33-http_client.h"
+#include "demos/33-mqtt.h"
 
 void app_main(void)
 {
@@ -45,4 +46,5 @@ void app_main(void)
     // start_demo_32_wifi_ap();
     // start_demo_33_web_server();
     // start_demo_33_http_client();
+    // start_demo_33_mqtt();
 }

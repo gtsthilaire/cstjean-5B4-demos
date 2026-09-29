@@ -1,0 +1,5 @@
+# Depuis ESP-IDF v6, le client MQTT n'est plus inclus dans ESP-IDF : il est téléchargé automatiquement
+# par le gestionnaire de composants (dans managed_components/).
+# https://components.espressif.com/components/espressif/mqtt
+dependencies:
+  espressif/mqtt: "*"

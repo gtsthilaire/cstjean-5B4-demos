@@ -14,6 +14,7 @@
 #include "demos/15-led_bar_74hc595.h"
 #include "demos/16-seven_segment.h"
 #include "demos/16-led_matrix.h"
+#include "demos/18-servo.h"
 #include "demos/20-lcd1602.h"
 #include "demos/26-mpu6050.h"
 #include "demos/32-wifi_station.h"
@@ -40,6 +41,7 @@ void app_main(void)
     // start_demo_15_led_bar_74hc595();
     // start_demo_16_seven_segment();
     // start_demo_16_led_matrix();
+    // start_demo_18_servo();
     // start_demo_20_lcd1602();
     // start_demo_26_mpu6050();
     // start_demo_32_wifi_station();

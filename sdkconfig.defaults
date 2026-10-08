@@ -1,0 +1,4 @@
+# Valeurs par défaut appliquées quand sdkconfig est (re)généré.
+
+# Tick FreeRTOS à 1000 Hz : vTaskDelay peut attendre 1 ms au lieu de 10 ms minimum (requis par la démo du moteur pas-à-pas).
+CONFIG_FREERTOS_HZ=1000

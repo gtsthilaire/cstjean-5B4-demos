@@ -20,6 +20,7 @@
 #include "demos/19-stepper.h"
 #include "demos/20-lcd1602.h"
 #include "demos/21-ultrasonic.h"
+#include "demos/22-keypad.h"
 #include "demos/26-mpu6050.h"
 #include "demos/32-wifi_station.h"
 #include "demos/32-wifi_ap.h"
@@ -51,6 +52,7 @@ void app_main(void)
     // start_demo_19_stepper();
     // start_demo_20_lcd1602();
     // start_demo_21_ultrasonic();
+    // start_demo_22_keypad();
     // start_demo_26_mpu6050();
     // start_demo_32_wifi_station();
     // start_demo_32_wifi_ap();

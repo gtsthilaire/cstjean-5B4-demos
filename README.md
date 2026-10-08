@@ -48,7 +48,7 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 19 | Stepper Motor | ✅ | `19-stepper` | |
 | 20 | LCD1602 | ✅ | `20-lcd1602` | |
 | 21 | Ultrasonic Ranging | ✅ | `21-ultrasonic` | Projet 21.2 non fait : même mesure avec une bibliothèque Arduino |
-| 22 | Matrix Keypad | ❌ | | |
+| 22 | Matrix Keypad | 🟡 | `22-keypad` | Projet 22.1 seulement (22.2 : clavier + servo + buzzer, voir `18-servo` et `07-buzzer_active`) |
 | 23 | Infrared Remote | ❌ | | |
 | 24 | Hygrothermograph DHT11 | ❌ | | |
 | 25 | Infrared Motion Sensor | ❌ | | |

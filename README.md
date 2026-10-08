@@ -43,7 +43,7 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 16 | 74HC595 & 7-Segment Display | ✅ | `16-seven_segment` | Compte de 0 à F |
 | 16 | 74HC595 & LED Matrix | ✅ | `16-led_matrix` | |
 | 17 | Relay & Motor | ✅ | `17-relay` | Sans bouton ni LED (voir `02-push_button` et `01-led`). Pile 9V requise pour le moteur |
-| 17 | Motor & Driver | ❌ | | |
+| 17 | Motor & Driver | ✅ | `17-dc_motor` | Sans potentiomètre (voir `09-potentiometer`). Pile 9V requise pour le moteur |
 | 18 | Servo | 🟡 | `18-servo` | Projet 18.1 seulement (18.2 : voir `09-potentiometer`) |
 | 19 | Stepper Motor | ❌ | | |
 | 20 | LCD1602 | ✅ | `20-lcd1602` | |

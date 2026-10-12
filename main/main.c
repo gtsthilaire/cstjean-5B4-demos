@@ -22,6 +22,7 @@
 #include "demos/21-ultrasonic.h"
 #include "demos/22-keypad.h"
 #include "demos/23-ir_remote.h"
+#include "demos/24-dht11.h"
 #include "demos/26-mpu6050.h"
 #include "demos/32-wifi_station.h"
 #include "demos/32-wifi_ap.h"
@@ -55,6 +56,7 @@ void app_main(void)
     // start_demo_21_ultrasonic();
     // start_demo_22_keypad();
     // start_demo_23_ir_remote();
+    // start_demo_24_dht11();
     // start_demo_26_mpu6050();
     // start_demo_32_wifi_station();
     // start_demo_32_wifi_ap();

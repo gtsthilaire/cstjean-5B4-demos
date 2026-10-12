@@ -50,7 +50,7 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 21 | Ultrasonic Ranging | ✅ | `21-ultrasonic` | Projet 21.2 non fait : même mesure avec une bibliothèque Arduino |
 | 22 | Matrix Keypad | 🟡 | `22-keypad` | Projet 22.1 seulement (22.2 : clavier + servo + buzzer, voir `18-servo` et `07-buzzer_active`) |
 | 23 | Infrared Remote | 🟡 | `23-ir_remote` | Projet 23.1 seulement (23.2 : télécommande + LED PWM + buzzer, voir `04-led_pwm` et `07-buzzer_active`) |
-| 24 | Hygrothermograph DHT11 | ❌ | | |
+| 24 | Hygrothermograph DHT11 | 🟡 | `24-dht11` | Projet 24.1 seulement (24.2 : affichage sur LCD, voir `20-lcd1602`) |
 | 25 | Infrared Motion Sensor | ❌ | | |
 | 26 | Attitude Sensor MPU6050 | ✅ | `26-mpu6050` | |
 | 27 | Bluetooth | ❌ | | |

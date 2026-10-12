@@ -22,6 +22,7 @@ idf_component_register(SRCS "main.c"
                              "demos/20-lcd1602.c"
                              "demos/21-ultrasonic.c"
                              "demos/22-keypad.c"
+                             "demos/23-ir_remote.c"
                              "demos/26-mpu6050.c"
                              "demos/32-wifi_station.c"
                              "demos/32-wifi_ap.c"
@@ -29,4 +30,4 @@ idf_component_register(SRCS "main.c"
                              "demos/33-http_client.c"
                              "demos/33-mqtt.c"
                         INCLUDE_DIRS "."
-                        REQUIRES led push_button led_bar led_pwm led_rgb led_pixel buzzer_active buzzer_passive potentiometer touch photoresistor thermistor joystick led_bar_74hc595 seven_segment led_matrix relay dc_motor servo stepper lcd1602 ultrasonic keypad mpu6050 wifi web_server thingspeak adafruit_io esp_event esp_wifi)
+                        REQUIRES led push_button led_bar led_pwm led_rgb led_pixel buzzer_active buzzer_passive potentiometer touch photoresistor thermistor joystick led_bar_74hc595 seven_segment led_matrix relay dc_motor servo stepper lcd1602 ultrasonic keypad ir_remote mpu6050 wifi web_server thingspeak adafruit_io esp_event esp_wifi)

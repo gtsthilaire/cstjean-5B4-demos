@@ -14,13 +14,13 @@ static void led_pwm_task(void *arg)
     led_pwm_t *led_pwm = (led_pwm_t *)arg;
 
     while (1) {
-        ESP_LOGI(TAG, "LED FADE IN");
+        ESP_LOGI(TAG, "La LED s'allume progressivement");
         for (int duty = 0; duty <= LED_PWM_DUTY_MAX; duty++) {
             led_pwm_set_duty(led_pwm, duty);
             vTaskDelay(pdMS_TO_TICKS(10));
         }
 
-        ESP_LOGI(TAG, "LED FADE OUT");
+        ESP_LOGI(TAG, "La LED s'éteint progressivement");
         for (int duty = LED_PWM_DUTY_MAX; duty >= 0; duty--) {
             led_pwm_set_duty(led_pwm, duty);
             vTaskDelay(pdMS_TO_TICKS(10));
@@ -33,5 +33,5 @@ void start_demo_04_led_pwm(void)
     static led_pwm_t led_pwm;
     led_pwm = led_pwm_init(LED_PWM_GPIO, LED_PWM_CHANNEL, false);
 
-    xTaskCreate(led_pwm_task, "04-led_pwm_task", 2048, &led_pwm, 1, NULL);
+    xTaskCreate(led_pwm_task, "04-led_pwm_task", 4096, &led_pwm, 1, NULL);
 }

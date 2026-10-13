@@ -31,5 +31,5 @@ void start_demo_22_keypad(void)
     static keypad_t keypad;
     keypad = keypad_init(KEYPAD_ROW_GPIOS, KEYPAD_COL_GPIOS);
 
-    xTaskCreate(keypad_task, "22-keypad_task", 2048, &keypad, 1, NULL);
+    xTaskCreate(keypad_task, "22-keypad_task", 4096, &keypad, 1, NULL);
 }

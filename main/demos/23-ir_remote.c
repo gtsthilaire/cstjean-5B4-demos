@@ -29,5 +29,5 @@ void start_demo_23_ir_remote(void)
     static ir_remote_t ir_remote;
     ir_remote = ir_remote_init(IR_REMOTE_GPIO);
 
-    xTaskCreate(ir_remote_task, "23-ir_remote_task", 2048, &ir_remote, 1, NULL);
+    xTaskCreate(ir_remote_task, "23-ir_remote_task", 4096, &ir_remote, 1, NULL);
 }

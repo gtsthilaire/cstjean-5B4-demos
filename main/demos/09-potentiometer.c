@@ -29,5 +29,5 @@ void start_demo_09_potentiometer(void)
     static potentiometer_t potentiometer;
     potentiometer = potentiometer_init(POTENTIOMETER_GPIO);
 
-    xTaskCreate(potentiometer_task, "09-potentiometer_task", 2048, &potentiometer, 1, NULL);
+    xTaskCreate(potentiometer_task, "09-potentiometer_task", 4096, &potentiometer, 1, NULL);
 }

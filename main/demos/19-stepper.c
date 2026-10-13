@@ -38,5 +38,5 @@ void start_demo_19_stepper(void)
     static stepper_t stepper;
     stepper = stepper_init(STEPPER_GPIO_IN1, STEPPER_GPIO_IN2, STEPPER_GPIO_IN3, STEPPER_GPIO_IN4);
 
-    xTaskCreate(stepper_task, "19-stepper_task", 2048, &stepper, 1, NULL);
+    xTaskCreate(stepper_task, "19-stepper_task", 4096, &stepper, 1, NULL);
 }

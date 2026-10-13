@@ -7,7 +7,7 @@
  * Voir components/touch pour le fonctionnement du capteur.
  *
  * Tutoriel original : Chapitre 10 - Touch Sensor (Freenove)
- * À noter que, contrairement au tutoriel, je n'ai pas fait de gestion de LED.
+ * À noter que, contrairement au tutoriel, il n'y a pas de LED (voir la démo 01).
  */
 
 void start_demo_10_touch(void);

@@ -49,5 +49,5 @@ void start_demo_17_dc_motor(void)
     static dc_motor_t motor;
     motor = dc_motor_init(MOTOR_GPIO_IN1, MOTOR_GPIO_IN2, MOTOR_GPIO_ENABLE, MOTOR_CHANNEL);
 
-    xTaskCreate(dc_motor_task, "17-dc_motor_task", 2048, &motor, 1, NULL);
+    xTaskCreate(dc_motor_task, "17-dc_motor_task", 4096, &motor, 1, NULL);
 }

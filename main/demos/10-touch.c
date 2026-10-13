@@ -41,5 +41,5 @@ void start_demo_10_touch(void)
     static touch_t touch;
     touch = touch_init(TOUCH_GPIO);
 
-    xTaskCreate(touch_task, "10-touch_task", 2048, &touch, 1, NULL);
+    xTaskCreate(touch_task, "10-touch_task", 4096, &touch, 1, NULL);
 }

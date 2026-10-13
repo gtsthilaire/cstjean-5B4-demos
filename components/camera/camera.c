@@ -38,7 +38,7 @@ static const char *TAG = "components/camera";
 #define CAM_PIN_HREF 23
 #define CAM_PIN_PCLK 22
 
-bool camera_init(void)
+void camera_init(void)
 {
     ESP_LOGI(TAG, "Configuration de la caméra");
 
@@ -79,8 +79,5 @@ bool camera_init(void)
     esp_err_t err = esp_camera_init(&camera_config);
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "esp_camera_init a échoué: %s", esp_err_to_name(err));
-        return false;
     }
-
-    return true;
 }

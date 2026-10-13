@@ -30,5 +30,5 @@ void start_demo_16_seven_segment(void)
     static seven_segment_t seven_segment;
     seven_segment = seven_segment_init(SEVEN_SEGMENT_GPIO_DATA, SEVEN_SEGMENT_GPIO_CLOCK, SEVEN_SEGMENT_GPIO_LATCH);
 
-    xTaskCreate(seven_segment_task, "16-seven_segment_task", 2048, &seven_segment, 1, NULL);
+    xTaskCreate(seven_segment_task, "16-seven_segment_task", 4096, &seven_segment, 1, NULL);
 }

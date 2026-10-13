@@ -13,11 +13,11 @@ static void led_task(void *arg)
     led_t *led = (led_t *)arg;
 
     while (1) {
-        ESP_LOGI(TAG, "LED ON");
+        ESP_LOGI(TAG, "LED allumée");
         led_set(led, true);
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        ESP_LOGI(TAG, "LED OFF");
+        ESP_LOGI(TAG, "LED éteinte");
         led_set(led, false);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
@@ -29,5 +29,5 @@ void start_demo_01_led(void)
     led = led_init(LED_GPIO);
 
     // Voir aussi led_start_blinking plutôt que de créer une tâche pour faire clignoter la LED
-    xTaskCreate(led_task, "01-led_task", 2048, &led, 1, NULL);
+    xTaskCreate(led_task, "01-led_task", 4096, &led, 1, NULL);
 }

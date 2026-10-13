@@ -39,5 +39,5 @@ void start_demo_14_joystick(void)
     static joystick_t joystick;
     joystick = joystick_init(JOYSTICK_GPIO_X, JOYSTICK_GPIO_Y, JOYSTICK_GPIO_Z);
 
-    xTaskCreate(joystick_task, "14-joystick_task", 2048, &joystick, 1, NULL);
+    xTaskCreate(joystick_task, "14-joystick_task", 4096, &joystick, 1, NULL);
 }

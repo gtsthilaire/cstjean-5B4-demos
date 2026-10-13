@@ -38,5 +38,5 @@ void start_demo_15_led_bar_74hc595(void)
     static led_bar_74hc595_t led_bar_74hc595;
     led_bar_74hc595 = led_bar_74hc595_init(LED_BAR_74HC595_GPIO_DATA, LED_BAR_74HC595_GPIO_CLOCK, LED_BAR_74HC595_GPIO_LATCH);
 
-    xTaskCreate(led_bar_74hc595_task, "15-led_bar_74hc595_task", 2048, &led_bar_74hc595, 1, NULL);
+    xTaskCreate(led_bar_74hc595_task, "15-led_bar_74hc595_task", 4096, &led_bar_74hc595, 1, NULL);
 }

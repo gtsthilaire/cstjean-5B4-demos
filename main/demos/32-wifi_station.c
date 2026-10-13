@@ -9,12 +9,12 @@ static const char *TAG = "demos/32-wifi_station";
 static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
-        ESP_LOGI(TAG, "WIFI: CONNEXION EN COURS...");
+        ESP_LOGI(TAG, "Wi-Fi : connexion en cours...");
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        ESP_LOGI(TAG, "WIFI: DÉCONNECTÉ");
+        ESP_LOGI(TAG, "Wi-Fi : déconnecté");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t *e = (ip_event_got_ip_t *)event_data;
-        ESP_LOGI(TAG, "WIFI: CONNECTÉ (IP: " IPSTR ")", IP2STR(&e->ip_info.ip));
+        ESP_LOGI(TAG, "Wi-Fi : connecté (IP : " IPSTR ")", IP2STR(&e->ip_info.ip));
     }
 }
 

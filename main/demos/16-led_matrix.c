@@ -78,13 +78,13 @@ static void led_matrix_task(void *arg)
     led_matrix_t *led_matrix = (led_matrix_t *)arg;
 
     if (TEST_MODE) {
-        ESP_LOGI(TAG, "MODE TEST : toutes les LED allumées");
+        ESP_LOGI(TAG, "Mode test : toutes les LED allumées");
         led_matrix_show(led_matrix, ALL_ON);
         vTaskDelete(NULL); // Le balayage continue en arrière-plan : la matrice reste allumée
     }
 
     while (1) {
-        ESP_LOGI(TAG, "VISAGE (octets)");
+        ESP_LOGI(TAG, "Visage (octets)");
         led_matrix_show(led_matrix, SMILING_FACE);
         vTaskDelay(pdMS_TO_TICKS(PATTERN_DELAY_MS));
 
@@ -102,5 +102,5 @@ void start_demo_16_led_matrix(void)
     led_matrix = led_matrix_init(LED_MATRIX_GPIO_DATA, LED_MATRIX_GPIO_CLOCK, LED_MATRIX_GPIO_LATCH);
     led_matrix_start(&led_matrix); // Le balayage tourne en arrière-plan (esp_timer), la tâche ne fait que changer de motif
 
-    xTaskCreate(led_matrix_task, "16-led_matrix_task", 2048, &led_matrix, 1, NULL);
+    xTaskCreate(led_matrix_task, "16-led_matrix_task", 4096, &led_matrix, 1, NULL);
 }

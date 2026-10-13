@@ -11,7 +11,7 @@
  *   Tension = (Valeur DAC / 255) * 3.3
  *
  * Tutoriel original : Chapitre 9 - AD/DA Converter (Freenove)
- * À noter que, contrairement au tutoriel, je n'ai pas fait la partie DAC (sortie sur le GPIO 25
+ * À noter que, contrairement au tutoriel, la partie DAC n'est pas faite (sortie sur le GPIO 25
  * pour commander la luminosité d'une LED).
  */
 

@@ -5,7 +5,7 @@
  * Voir components/dht11 pour le fonctionnement du protocole.
  *
  * Tutoriel original : Chapitre 24 - Hygrothermograph DHT11 (Freenove)
- * À noter que je n'ai fait que le projet 24.1 (le projet 24.2 affiche les valeurs sur un LCD, voir la démo 20).
+ * À noter que seul le projet 24.1 est fait (le projet 24.2 affiche les valeurs sur un LCD, voir la démo 20).
  */
 
 void start_demo_24_dht11(void);

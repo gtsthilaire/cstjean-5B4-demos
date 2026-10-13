@@ -30,5 +30,5 @@ void start_demo_26_mpu6050(void)
     static mpu6050_t mpu6050;
     mpu6050 = mpu6050_init(MPU6050_SDA_GPIO, MPU6050_SCL_GPIO, MPU6050_I2C_ADDR);
 
-    xTaskCreate(mpu6050_task, "26-mpu6050_task", 3072, &mpu6050, 1, NULL);
+    xTaskCreate(mpu6050_task, "26-mpu6050_task", 4096, &mpu6050, 1, NULL);
 }

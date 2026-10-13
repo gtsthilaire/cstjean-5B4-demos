@@ -31,5 +31,5 @@ void start_demo_21_ultrasonic(void)
     static ultrasonic_t ultrasonic;
     ultrasonic = ultrasonic_init(ULTRASONIC_TRIG_GPIO, ULTRASONIC_ECHO_GPIO);
 
-    xTaskCreate(ultrasonic_task, "21-ultrasonic_task", 2048, &ultrasonic, 1, NULL);
+    xTaskCreate(ultrasonic_task, "21-ultrasonic_task", 4096, &ultrasonic, 1, NULL);
 }

@@ -13,16 +13,16 @@ static void ap_event_handler(void *arg, esp_event_base_t event_base, int32_t eve
 {
     switch (event_id) {
         case WIFI_EVENT_AP_START:
-            ESP_LOGI(TAG, "WIFI: POINT D'ACCÈS DÉMARRÉ");
+            ESP_LOGI(TAG, "Wi-Fi : point d'accès démarré");
             break;
         case WIFI_EVENT_AP_STOP:
-            ESP_LOGI(TAG, "WIFI: POINT D'ACCÈS ARRÊTÉ");
+            ESP_LOGI(TAG, "Wi-Fi : point d'accès arrêté");
             break;
         case WIFI_EVENT_AP_STACONNECTED:
-            ESP_LOGI(TAG, "WIFI: UN APPAREIL S'EST CONNECTÉ");
+            ESP_LOGI(TAG, "Wi-Fi : un appareil s'est connecté");
             break;
         case WIFI_EVENT_AP_STADISCONNECTED:
-            ESP_LOGI(TAG, "WIFI: UN APPAREIL S'EST DÉCONNECTÉ");
+            ESP_LOGI(TAG, "Wi-Fi : un appareil s'est déconnecté");
             break;
         default:
             break;

@@ -30,5 +30,5 @@ void start_demo_24_dht11(void)
     static dht11_t dht11;
     dht11 = dht11_init(DHT11_GPIO);
 
-    xTaskCreate(dht11_task, "24-dht11_task", 2048, &dht11, 1, NULL);
+    xTaskCreate(dht11_task, "24-dht11_task", 4096, &dht11, 1, NULL);
 }

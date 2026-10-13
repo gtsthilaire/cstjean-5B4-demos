@@ -7,7 +7,7 @@
  * on peut obtenir n'importe quelle couleur (mélange additif). Voir la démo 04 pour une explication du PWM.
  *
  * Tutoriel original : Chapitre 5 - RGB LED (Freenove)
- * À noter que, contrairement au tutoriel, je n'ai pas fait de couleurs aléatoires.
+ * À noter que, contrairement au tutoriel, il n'y a pas de couleurs aléatoires.
  */
 
 void start_demo_05_led_rgb(void);

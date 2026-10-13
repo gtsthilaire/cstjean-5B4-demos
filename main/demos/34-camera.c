@@ -35,9 +35,7 @@ static void camera_task(void *arg)
 
 void start_demo_34_camera(void)
 {
-    if (!camera_init()) {
-        return;
-    }
+    camera_init();
 
     xTaskCreate(camera_task, "34-camera_task", 4096, NULL, 1, NULL);
 }

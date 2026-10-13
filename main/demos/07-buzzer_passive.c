@@ -36,5 +36,5 @@ void start_demo_07_buzzer_passive(void)
     static buzzer_passive_t buzzer;
     buzzer = buzzer_passive_init(BUZZER_GPIO, BUZZER_CHANNEL);
 
-    xTaskCreate(buzzer_passive_task, "07-buzzer_passive_task", 2048, &buzzer, 1, NULL);
+    xTaskCreate(buzzer_passive_task, "07-buzzer_passive_task", 4096, &buzzer, 1, NULL);
 }

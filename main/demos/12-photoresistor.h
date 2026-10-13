@@ -6,7 +6,8 @@
  * Voir la démo 09 pour une explication de l'ADC.
  *
  * Tutoriel original : Chapitre 12 - Photoresistor & LED (Freenove)
- * À noter que, contrairement au tutoriel, je n'ai pas fait de gestion de LED en fonction de la luminosité ambiante.
+ * À noter que, contrairement au tutoriel, il n'y a pas de LED qui réagit à la luminosité
+ * ambiante (voir la démo 04).
  */
 
 void start_demo_12_photoresistor(void);

@@ -13,14 +13,10 @@
  * un rapport cyclique de 50% signifie que l'impulsion est haute pendant la moitié du temps et basse pendant l'autre moitié.
  * On aura donc une puissance moyenne de 50% de la puissance maximale.
  *
- * Le PWM est souvent utilisé pour :
- * - Le contrôle de la luminosité des LED
- * - Le contrôle de la vitesse des moteurs
- * - La génération de signaux audio
- * - Etc.
+ * Le PWM sert par exemple à contrôler la luminosité d'une LED ou la vitesse d'un moteur.
  *
  * Tutoriel original : Chapitre 4 - Analog and PWM (Freenove)
- * À noter que je n'ai fait que le projet 4.1 (Breathing LED).
+ * À noter que seul le projet 4.1 (Breathing LED) est fait.
  */
 
 void start_demo_04_led_pwm(void);

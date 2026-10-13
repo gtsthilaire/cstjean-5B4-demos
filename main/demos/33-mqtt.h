@@ -1,7 +1,7 @@
 /**
  * Démonstration de MQTT avec Adafruit IO.
  * Une fois l'ESP32 connecté au Wi-Fi puis au broker MQTT, la démo :
- * - publie une valeur (aléatoire entre 20 et 30) sur le feed « demo-5b4 » toutes les 5 secondes;
+ * - publie une valeur (aléatoire entre 20 et 30) sur le feed « demo-5b4 » toutes les 5 secondes ;
  * - s'abonne au même feed et affiche tous les messages reçus.
  * On voit donc passer chaque valeur publiée (le broker nous la renvoie), ainsi que les valeurs envoyées
  * depuis le tableau de bord d'Adafruit IO.

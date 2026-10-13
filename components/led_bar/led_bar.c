@@ -1,3 +1,8 @@
+/**
+ * Une barre de LED, c'est 10 LED indépendantes dans un même boîtier. Chaque LED a son propre GPIO (et sa résistance)
+ * et se contrôle comme une LED simple (voir components/led). Le composant garde donc simplement un tableau de GPIO.
+ */
+
 #include "led_bar.h"
 #include "esp_log.h"
 

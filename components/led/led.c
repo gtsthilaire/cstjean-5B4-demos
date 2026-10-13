@@ -1,3 +1,11 @@
+/**
+ * La LED est branchée sur un GPIO configuré en sortie (avec une résistance qui limite le courant).
+ * GPIO à l'état haut (3.3V) : la LED s'allume. GPIO à l'état bas (0V) : elle s'éteint.
+ *
+ * Pour la faire clignoter sans occuper une tâche, led_start_blinking utilise un esp_timer : une fonction appelée
+ * automatiquement à intervalle régulier, qui inverse l'état de la LED.
+ */
+
 #include "led.h"
 #include "esp_log.h"
 
@@ -18,7 +26,6 @@ void led_set(led_t *led, bool on)
         return;
     }
 
-    ESP_LOGI(TAG, "LED (GPIO %d): %s", led->gpio, on ? "ON" : "OFF");
     led->is_on = on;
     gpio_set_level(led->gpio, on);
 }

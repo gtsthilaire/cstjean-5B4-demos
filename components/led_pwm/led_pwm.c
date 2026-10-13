@@ -1,3 +1,12 @@
+/**
+ * Un GPIO est soit à 3.3V, soit à 0V. Pour obtenir une LED « à moitié allumée », on l'allume et on l'éteint très vite
+ * (5000 fois par seconde) : l'œil ne voit pas le clignotement, seulement la luminosité moyenne. Plus la LED reste
+ * allumée longtemps à chaque cycle (le rapport cyclique, ou duty), plus elle paraît brillante.
+ *
+ * Sur l'ESP32, c'est le périphérique LEDC qui fabrique ce signal tout seul : on lui donne le rapport cyclique, et il
+ * continue sans que le programme ait à s'en occuper. Un timer fixe la fréquence, et un canal relie ce timer à un GPIO.
+ */
+
 #include "led_pwm.h"
 #include "esp_log.h"
 

@@ -6,7 +6,7 @@
  * Pour un seul bouton, voir la démo 02. Voir components/keypad pour le balayage.
  *
  * Tutoriel original : Chapitre 22 - Matrix Keypad (Freenove)
- * À noter que je n'ai fait que le projet 22.1 (le projet 22.2 ajoute un servo et un buzzer, voir les démos 18 et 07).
+ * À noter que seul le projet 22.1 est fait (le projet 22.2 ajoute un servo et un buzzer, voir les démos 18 et 07).
  */
 
 void start_demo_22_keypad(void);

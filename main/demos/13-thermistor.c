@@ -27,5 +27,5 @@ void start_demo_13_thermistor(void)
     static thermistor_t thermistor;
     thermistor = thermistor_init(THERMISTOR_GPIO);
 
-    xTaskCreate(thermistor_task, "13-thermistor_task", 2048, &thermistor, 1, NULL);
+    xTaskCreate(thermistor_task, "13-thermistor_task", 4096, &thermistor, 1, NULL);
 }

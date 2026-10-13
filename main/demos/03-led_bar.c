@@ -58,5 +58,5 @@ void start_demo_03_led_bar(void)
     static led_bar_t led_bar;
     led_bar = led_bar_init(LED_BAR_GPIOS, sizeof(LED_BAR_GPIOS) / sizeof(LED_BAR_GPIOS[0]));
 
-    xTaskCreate(led_bar_task, "03-led_bar_task", 2048, &led_bar, 1, NULL);
+    xTaskCreate(led_bar_task, "03-led_bar_task", 4096, &led_bar, 1, NULL);
 }

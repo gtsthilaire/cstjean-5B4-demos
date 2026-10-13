@@ -21,13 +21,13 @@ typedef struct {
 
 // Couleurs primaires, puis mélanges de deux couleurs, puis des trois
 static const color_t COLORS[] = {
-    { "ROUGE",   255,   0,   0 },
-    { "VERT",      0, 255,   0 },
-    { "BLEU",      0,   0, 255 },
-    { "JAUNE",   255, 255,   0 }, // rouge + vert
-    { "CYAN",      0, 255, 255 }, // vert + bleu
-    { "MAGENTA", 255,   0, 255 }, // rouge + bleu
-    { "BLANC",   255, 255, 255 }, // les trois
+    { "Rouge",   255,   0,   0 },
+    { "Vert",      0, 255,   0 },
+    { "Bleu",      0,   0, 255 },
+    { "Jaune",   255, 255,   0 }, // rouge + vert
+    { "Cyan",      0, 255, 255 }, // vert + bleu
+    { "Magenta", 255,   0, 255 }, // rouge + bleu
+    { "Blanc",   255, 255, 255 }, // les trois
 };
 
 // Fait le tour de la roue des couleurs : on passe graduellement du rouge au vert, du vert au bleu,
@@ -59,7 +59,7 @@ static void led_rgb_task(void *arg)
             vTaskDelay(pdMS_TO_TICKS(1000));
         }
 
-        ESP_LOGI(TAG, "ROUE DES COULEURS");
+        ESP_LOGI(TAG, "Roue des couleurs");
         color_wheel(led_rgb);
     }
 }
@@ -71,5 +71,5 @@ void start_demo_05_led_rgb(void)
                            LED_RGB_GPIO_G, LED_RGB_CHANNEL_G,
                            LED_RGB_GPIO_B, LED_RGB_CHANNEL_B);
 
-    xTaskCreate(led_rgb_task, "05-led_rgb_task", 2048, &led_rgb, 1, NULL);
+    xTaskCreate(led_rgb_task, "05-led_rgb_task", 4096, &led_rgb, 1, NULL);
 }

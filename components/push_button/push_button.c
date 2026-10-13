@@ -1,3 +1,12 @@
+/**
+ * Quand on appuie sur le bouton, il relie le GPIO à la masse (0V). Quand on le relâche, une résistance de pull-up
+ * ramène le GPIO à 3.3V. Donc : 0 = pressé, 1 = relâché.
+ *
+ * Debounce : un bouton mécanique « rebondit ». Pendant quelques millisecondes après l'appui, le contact s'ouvre et
+ * se ferme plusieurs fois, et on pourrait croire à plusieurs appuis. On accepte donc un nouvel état seulement s'il
+ * reste stable pendant 50 ms.
+ */
+
 #include "push_button.h"
 #include "esp_log.h"
 #include "esp_timer.h"

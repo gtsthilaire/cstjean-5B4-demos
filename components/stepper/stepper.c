@@ -26,6 +26,11 @@
  * correspondant se ferme et la bobine reçoit le courant de l'alimentation 5V. C'est le même rôle que le transistor
  * qui commande le relais (démo 17-relay), mais en 4 exemplaires dans une seule puce.
  * Les 4 LED du module (A, B, C, D) s'allument quand leur bobine est alimentée.
+ *
+ * Comparaison avec les autres moteurs du kit :
+ *   - moteur DC (components/dc_motor) : on choisit la vitesse, mais on ne sait pas où il est rendu ;
+ *   - servo (components/servo) : on choisit un angle précis, mais seulement entre 0 et 180 degrés ;
+ *   - pas-à-pas : on choisit un nombre de pas précis, et il peut faire autant de tours qu'on veut.
  */
 
 #include "stepper.h"

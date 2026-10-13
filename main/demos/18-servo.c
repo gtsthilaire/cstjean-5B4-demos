@@ -39,5 +39,5 @@ void start_demo_18_servo(void)
     static servo_t servo;
     servo = servo_init(SERVO_GPIO, SERVO_CHANNEL);
 
-    xTaskCreate(servo_task, "18-servo_task", 2048, &servo, 1, NULL);
+    xTaskCreate(servo_task, "18-servo_task", 4096, &servo, 1, NULL);
 }

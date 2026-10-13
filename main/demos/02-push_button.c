@@ -35,5 +35,5 @@ void start_demo_02_push_button(void)
     static push_button_t push_button;
     push_button = push_button_init(PUSH_BUTTON_GPIO);
 
-    xTaskCreate(push_button_task, "02-push_button_task", 2048, &push_button, 1, NULL);
+    xTaskCreate(push_button_task, "02-push_button_task", 4096, &push_button, 1, NULL);
 }

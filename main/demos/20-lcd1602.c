@@ -78,5 +78,5 @@ void start_demo_20_lcd1602(void)
     static lcd1602_t lcd;
     lcd = lcd1602_init(LCD_SDA_GPIO, LCD_SCL_GPIO, LCD_I2C_ADDR);
 
-    xTaskCreate(lcd1602_task, "20-lcd1602_task", 2048, &lcd, 1, NULL);
+    xTaskCreate(lcd1602_task, "20-lcd1602_task", 4096, &lcd, 1, NULL);
 }

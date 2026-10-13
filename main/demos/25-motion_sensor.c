@@ -33,5 +33,5 @@ void start_demo_25_motion_sensor(void)
     static motion_sensor_t motion_sensor;
     motion_sensor = motion_sensor_init(MOTION_SENSOR_GPIO);
 
-    xTaskCreate(motion_sensor_task, "25-motion_sensor_task", 2048, &motion_sensor, 1, NULL);
+    xTaskCreate(motion_sensor_task, "25-motion_sensor_task", 4096, &motion_sensor, 1, NULL);
 }

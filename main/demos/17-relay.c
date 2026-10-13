@@ -28,5 +28,5 @@ void start_demo_17_relay(void)
     static relay_t relay;
     relay = relay_init(RELAY_GPIO);
 
-    xTaskCreate(relay_task, "17-relay_task", 2048, &relay, 1, NULL);
+    xTaskCreate(relay_task, "17-relay_task", 4096, &relay, 1, NULL);
 }

@@ -27,5 +27,5 @@ void start_demo_12_photoresistor(void)
     static photoresistor_t photoresistor;
     photoresistor = photoresistor_init(PHOTORESISTOR_GPIO);
 
-    xTaskCreate(photoresistor_task, "12-photoresistor_task", 2048, &photoresistor, 1, NULL);
+    xTaskCreate(photoresistor_task, "12-photoresistor_task", 4096, &photoresistor, 1, NULL);
 }

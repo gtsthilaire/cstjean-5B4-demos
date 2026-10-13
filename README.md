@@ -60,7 +60,7 @@ main/main.c              -> appelle la fonction start_demo_NN_<nom>() de la dém
 | 31 | Play SD card music | ❌ | | |
 | 32 | WiFi Working Modes | ✅ | `32-wifi_station`, `32-wifi_ap` | Projets 32.1 (Station) et 32.2 (AP) |
 | 33 | TCP/IP | 🟡 | `33-web_server`, `33-http_client`, `33-mqtt` | Pas de TCP brut : serveur web, client HTTP (ThingSpeak) et MQTT (Adafruit IO) |
-| 34 | Camera Web Server | 🔧 | | |
+| 34 | Camera Web Server | 🟡 | `34-camera` | Photo affichée dans la console seulement (pas de serveur web) |
 | 35 | Camera Tcp Server | ❌ | | |
 | 36 | Soldering Circuit Board | ❌ | | |
 

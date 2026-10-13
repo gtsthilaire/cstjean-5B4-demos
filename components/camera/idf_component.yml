@@ -1,0 +1,4 @@
+# Dépendance téléchargée automatiquement par le gestionnaire de composants d'ESP-IDF (dans managed_components/).
+# https://components.espressif.com/components/espressif/esp32-camera
+dependencies:
+  espressif/esp32-camera: "*"

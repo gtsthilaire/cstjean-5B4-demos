@@ -30,6 +30,7 @@
 #include "demos/33-web_server.h"
 #include "demos/33-http_client.h"
 #include "demos/33-mqtt.h"
+#include "demos/34-camera.h"
 
 void app_main(void)
 {
@@ -58,11 +59,12 @@ void app_main(void)
     // start_demo_22_keypad();
     // start_demo_23_ir_remote();
     // start_demo_24_dht11();
-    start_demo_25_motion_sensor();
+    // start_demo_25_motion_sensor();
     // start_demo_26_mpu6050();
     // start_demo_32_wifi_station();
     // start_demo_32_wifi_ap();
     // start_demo_33_web_server();
     // start_demo_33_http_client();
     // start_demo_33_mqtt();
+    // start_demo_34_camera();
 }
